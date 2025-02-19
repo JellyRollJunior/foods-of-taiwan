@@ -2,14 +2,29 @@ import pg from 'pg';
 import fs from 'fs';
 import { connectionString } from './connection.js';
 
+const readFileError = (error) => {
+    console.log('Error reading file');
+    console.log(error);
+    return;
+};
+
 async function main() {
-    console.log('seeding...');
-    const sql = fs.readFileSync('./db/populatedb.sql',  { encoding: 'utf8' });
     const client = new pg.Client({ connectionString });
-    await client.connect();
-    await client.query(sql);
-    await client.end();
-    console.log('done');
+    try {
+        console.log('seeding...');
+        const sql = fs.readFileSync(
+            './db/populatedb.sql',
+            { encoding: 'utf8' },
+            readFileError
+        );
+        await client.connect();
+        await client.query(sql);
+        console.log('done');
+    } catch (error) {
+        console.log(error);
+    } finally {
+        await client.end();
+    }
 }
 
 main();
