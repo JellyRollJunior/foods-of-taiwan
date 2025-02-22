@@ -7,4 +7,11 @@ const getFoods = async () => {
     return rows;
 }
 
-export { getFoods }
+const getCategories = async () => {
+    const query = 'SELECT * FROM categories';
+    const { rows} = await pool.query(query);
+    console.log(rows);
+    return rows;
+}
+
+export { getFoods, getCategories }

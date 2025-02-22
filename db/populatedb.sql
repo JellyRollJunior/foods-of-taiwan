@@ -24,6 +24,10 @@ CREATE TABLE IF NOT EXISTS food_categories (
 );
 
 -- Insert foods
-INSERT INTO foods (title, is_default_value, description) VALUES 
-    ('Pork blood rice cake', TRUE, 'A rice cake that is made of congealed pork blood and rice (tastes much better than it sounds!). Normally steamed then dusted with finely chopped nuts, a thick soy sauce based sauce, and cilantro. Served on a stick and enjoyed with or without spicy sauce. A staple of night market stall food!'),
-    ('Oyster omlet', FAlSE, 'An egg/tapioca mixture with green onions that is pan fried with oysters. Often enjoyed with a thick soy sauce. The chewy texture of the egg tapioca omlet pairs wonderfully with the salty soy sauce and oyster flavor!');
+INSERT INTO foods (is_default_value, title, description) VALUES 
+    (TRUE, 'Pork blood rice cake', 'A rice cake that is made of congealed pork blood and rice (tastes much better than it sounds!). Normally steamed then dusted with finely chopped nuts, a thick soy sauce based sauce, and cilantro. Served on a stick and enjoyed with or without spicy sauce. A staple of night market stall food!'),
+    (TRUE, 'Oyster omlet', 'An egg/tapioca mixture with green onions that is pan fried with oysters. Often enjoyed with a thick soy sauce. The chewy texture of the egg tapioca omlet pairs wonderfully with the salty soy sauce and oyster flavor!');
+
+INSERT INTO categories (is_default_value, title, description) VALUES
+    (TRUE, 'Street food', 'Cheap eats commonly sold from roadside stalls or in night markets'),
+    (TRUE, 'Fine dining', 'Dishes that are typically served at a restaurant and cost (usually) a pretty penny!');
