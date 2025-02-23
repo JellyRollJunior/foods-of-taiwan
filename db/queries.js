@@ -1,17 +1,24 @@
 import { pool } from './pool.js';
 
-const getFoods = async () => {
-    const query = 'SELECT * FROM foods';
+const getCategories = async () => {
+    const query = 'SELECT * FROM categories';
     const { rows } = await pool.query(query);
     console.log(rows);
     return rows;
-}
+};
 
-const getCategories = async () => {
-    const query = 'SELECT * FROM categories';
-    const { rows} = await pool.query(query);
+const getFoods = async () => {
+    const query = 
+        `SELECT 
+            foods.title AS food_title, 
+            categories.title AS category_title,
+            foods.description 
+        FROM foods 
+        JOIN food_categories ON foods.id = food_categories.food_id 
+        JOIN categories ON food_categories.category_id = categories.id;`;
+    const { rows } = await pool.query(query);
     console.log(rows);
     return rows;
-}
+};
 
-export { getFoods, getCategories }
+export { getFoods, getCategories };

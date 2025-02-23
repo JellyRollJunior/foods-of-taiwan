@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS categories (
 
 CREATE TABLE IF NOT EXISTS food_categories (
     food_id INTEGER REFERENCES foods (id),
-    category_id INTEGER REFERENCES categories (id)    
+    category_id INTEGER REFERENCES categories (id),
+    is_default_value boolean DEFAULT FALSE   
 );
 
 -- Insert foods
@@ -31,3 +32,7 @@ INSERT INTO foods (is_default_value, title, description) VALUES
 INSERT INTO categories (is_default_value, title, description) VALUES
     (TRUE, 'Street food', 'Cheap eats commonly sold from roadside stalls or in night markets'),
     (TRUE, 'Fine dining', 'Dishes that are typically served at a restaurant and cost (usually) a pretty penny!');
+
+INSERT INTO food_categories (is_default_value, food_id, category_id) VALUES
+    (TRUE, 1, 1),
+    (TRUE, 2, 1);
