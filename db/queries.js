@@ -1,16 +1,7 @@
 import { pool } from './pool.js';
+import { databaseHandler } from './databaseHandler.js';
 
-const getCategories = async () => {
-    const query = `
-        SELECT * 
-        FROM categories
-    `;
-    const { rows } = await pool.query(query);
-    console.log(rows);
-    return rows;
-};
-
-const getFoods = async () => {
+const getFoods = databaseHandler(async () => {
     const query = `
         SELECT 
             foods.id AS id,
@@ -24,9 +15,19 @@ const getFoods = async () => {
     const { rows } = await pool.query(query);
     console.log(rows);
     return rows;
-};
+}, 'Error retrieving foods');
 
-const getCountFoods = async () => {
+const getCategories = databaseHandler(async () => {
+    const query = `
+        SELECT * 
+        FROM categoriesasdfasdf
+    `;
+    const { rows } = await pool.query(query);
+    console.log(rows);
+    return rows;
+}, 'Error retrieving categories');
+
+const getCountFoods = databaseHandler(async () => {
     const query = `
         SELECT COUNT(*) AS num_foods 
         FROM foods
@@ -34,9 +35,9 @@ const getCountFoods = async () => {
     const { rows } = await pool.query(query);
     console.log(rows);
     return rows;
-}
+}, 'Error retrieving food item count');
 
-const getCountCategories = async () => {
+const getCountCategories = databaseHandler(async () => {
     const query = `
         SELECT COUNT(*) AS num_categories 
         FROM categories
@@ -44,9 +45,9 @@ const getCountCategories = async () => {
     const { rows } = await pool.query(query);
     console.log(rows);
     return rows;
-}
+}, 'Error retrieving category item count');
 
-const insertFood = async (title, description, categoryId) => {
+const insertFood = databaseHandler(async (title, description, categoryId) => {
     // insert into foods
     const query = `
         INSERT INTO foods (title, description)
@@ -57,27 +58,27 @@ const insertFood = async (title, description, categoryId) => {
     console.log(`Rows inserted into foods: ${rowCount}`);
     // insert into food_categories
     insertFoodCategory(rows[0].id, categoryId);
-}
+}, 'Error inserting food');
 
-const insertCategory = async (title, description) => {
+const insertCategory = databaseHandler(async (title, description) => {
     const query = `
         INSERT INTO categories (title, description)
         VALUES ($1, $2)
     `;
     const { rowCount } = await pool.query(query, [title, description]);
     console.log(`Rows inserted into categories: ${rowCount}`);
-}
+}, 'Error inserting category');
 
-const insertFoodCategory = async (foodId, categoryId) => {
+const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
     const query = `
         INSERT INTO food_categories (food_id, category_id)
         VALUES ($1, $2)
     `;
     const { rowCount } = await pool.query(query, [foodId, categoryId]);
     console.log(`Rows inserted into food_categories: ${rowCount}`);
-}
+}, 'Error inserting food category');
 
-const updateFood = async (id, title, description) => {
+const updateFood = databaseHandler(async (id, title, description) => {
     const query = `
         UPDATE foods
         SET
@@ -87,9 +88,9 @@ const updateFood = async (id, title, description) => {
     `;
     const { rowCount } = await pool.query(query, [id, title, description]);
     console.log(`Rows updated in foods: ${rowCount}`)
-}
+}, 'Error updating food');
 
-const updateCategory = async (id, title, description) => {
+const updateCategory = databaseHandler(async (id, title, description) => {
     const query = `
         UPDATE categories
         SET
@@ -99,9 +100,9 @@ const updateCategory = async (id, title, description) => {
     `;
     let { rowCount } = await pool.query(query, [id, title, description]);
     console.log(`Rows updated in categories: ${rowCount}`);
-}
+}, 'Error updating category');
 
-const updateFoodCategory = async (foodId, categoryId) => {
+const updateFoodCategory = databaseHandler(async (foodId, categoryId) => {
     const query = `
         UPDATE food_categories
         SET
@@ -110,9 +111,9 @@ const updateFoodCategory = async (foodId, categoryId) => {
     `;
     let { rowCount } = await pool.query(query, [foodId, categoryId]);
     console.log(`Rows updated in food_categories: ${rowCount}`);
-}
+}, 'Error updating food category');
 
-const deleteFood = async (id) => {
+const deleteFood = databaseHandler(async (id) => {
     const query = `
         DELETE 
         FROM foods
@@ -120,9 +121,9 @@ const deleteFood = async (id) => {
     `;
     const {rowCount} = await pool.query(query, [id]);
     console.log(`Rows deleted from foods: ${rowCount}`);
-}
+}, 'Error deleting food');
 
-const deleteCategory = async (id) => {
+const deleteCategory = databaseHandler(async (id) => {
     // delete foods that use category
     const deleteFoodQuery = `
         DELETE
@@ -144,7 +145,7 @@ const deleteCategory = async (id) => {
     `;
     ({ rowCount } = await pool.query(deleteCategoryQuery, [id]));
     console.log(`Rows deleted from categories: ${rowCount}`);
-}
+}, 'Error deleting category');
 
 export { 
     getFoods, 
