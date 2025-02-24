@@ -46,6 +46,18 @@ const getCountCategories = async () => {
     return rows;
 }
 
+const updateCategory = async (id, title, description) => {
+    const query = `
+        UPDATE categories
+        SET
+            title = ($2),
+            description = ($3)
+        WHERE id = ($1)
+    `;
+    let { rowCount } = await pool.query(query, [id, title, description]);
+    console.log(`Num rows updated: ${rowCount}`);
+}
+
 const deleteFood = async (id) => {
     const deleteFoodCategoryQuery = `
         DELETE 
@@ -68,5 +80,6 @@ export {
     getCategories, 
     getCountFoods, 
     getCountCategories,
-    deleteFood
+    updateCategory,
+    deleteFood,
 };
