@@ -5,8 +5,8 @@ const getHomepage = async (request, response) => {
     const countCategories = await db.getCountCategories();
     response.render('index', {
         title: 'LALALLALAL',
-        countFood: countFood[0].num_foods,
-        countCategories: countCategories[0].num_categories,
+        countFood: countFood,
+        countCategories: countCategories,
     });
 };
 

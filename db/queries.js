@@ -34,7 +34,7 @@ const getCountFoods = databaseHandler(async () => {
     `;
     const { rows } = await pool.query(query);
     console.log(rows);
-    return rows;
+    return rows[0].num_foods;
 }, 'Error retrieving food item count');
 
 const getCountCategories = databaseHandler(async () => {
@@ -44,7 +44,7 @@ const getCountCategories = databaseHandler(async () => {
     `;
     const { rows } = await pool.query(query);
     console.log(rows);
-    return rows;
+    return rows[0].num_categories;
 }, 'Error retrieving category item count');
 
 const insertFood = databaseHandler(async (title, description, categoryId) => {
