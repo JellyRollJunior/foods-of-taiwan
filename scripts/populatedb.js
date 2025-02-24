@@ -1,6 +1,6 @@
 import pg from 'pg';
 import fs from 'fs';
-import { connectionString } from './connection.js';
+import { connectionString } from '../db/connection.js';
 
 const readFileError = (error) => {
     console.log('Error reading file');
@@ -13,7 +13,7 @@ async function main() {
     try {
         console.log('seeding...');
         const sql = fs.readFileSync(
-            './db/populatedb.sql',
+            './scripts/populatedb.sql',
             { encoding: 'utf8' },
             readFileError
         );
