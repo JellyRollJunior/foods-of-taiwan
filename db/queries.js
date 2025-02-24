@@ -21,4 +21,22 @@ const getFoods = async () => {
     return rows;
 };
 
-export { getFoods, getCategories };
+const getCountFoods = async () => {
+    const query = 
+        `SELECT COUNT(*) AS num_foods 
+        FROM foods`;
+    const { rows } = await pool.query(query);
+    console.log(rows);
+    return rows;
+}
+
+const getCountCategories = async () => {
+    const query = 
+        `SELECT COUNT(*) AS num_categories 
+        FROM categories`
+    const { rows } = await pool.query(query);
+    console.log(rows);
+    return rows;
+}
+
+export { getFoods, getCategories, getCountFoods, getCountCategories };
