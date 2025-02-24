@@ -46,6 +46,33 @@ const getCountCategories = async () => {
     return rows;
 }
 
+const insertFood = async (title, description) => {
+    const query = `
+        INSERT INTO foods (title, description)
+        VALUES ($1, $2)
+    `;
+    const { rowCount } = await pool.query(query, [title, description]);
+    console.log(`Rows inserted into foods: ${rowCount}`);
+}
+
+const insertCategory = async (title, description) => {
+    const query = `
+        INSERT INTO categories (title, description)
+        VALUES ($1, $2)
+    `;
+    const { rowCount } = await pool.query(query, [title, description]);
+    console.log(`Rows inserted into categories: ${rowCount}`);
+}
+
+const insertFoodCategory = async (foodId, categoryId) => {
+    const query = `
+        INSERT INTO food_categories (food_id, category_id)
+        VALUES ($1, $2)
+    `;
+    const { rowCount } = await pool.query(query, [foodId, categoryId]);
+    console.log(`Rows inserted into food_categories: ${rowCount}`);
+}
+
 const updateFood = async (id, title, description) => {
     const query = `
         UPDATE foods
@@ -120,6 +147,9 @@ export {
     getCategories, 
     getCountFoods, 
     getCountCategories,
+    insertFood,
+    insertCategory,
+    insertFoodCategory,
     updateFood,
     updateCategory,
     updateFoodCategory,
