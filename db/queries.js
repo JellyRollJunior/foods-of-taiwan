@@ -10,12 +10,12 @@ const getCategories = async () => {
 const getFoods = async () => {
     const query = 
         `SELECT 
-            foods.title AS food_title, 
-            categories.title AS category_title,
+            foods.title AS food, 
+            categories.title AS category,
             foods.description 
         FROM foods 
         JOIN food_categories ON foods.id = food_categories.food_id 
-        JOIN categories ON food_categories.category_id = categories.id;`;
+        JOIN categories ON food_categories.category_id = categories.id`;
     const { rows } = await pool.query(query);
     console.log(rows);
     return rows;
