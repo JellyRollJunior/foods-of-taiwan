@@ -20,7 +20,7 @@ const getFoods = databaseHandler(async () => {
 const getCategories = databaseHandler(async () => {
     const query = `
         SELECT * 
-        FROM categoriesasdfasdf
+        FROM categories
     `;
     const { rows } = await pool.query(query);
     console.log(rows);
