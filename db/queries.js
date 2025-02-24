@@ -46,6 +46,18 @@ const getCountCategories = async () => {
     return rows;
 }
 
+const updateFood = async (id, title, description) => {
+    const query = `
+        UPDATE foods
+        SET
+            title = ($2),
+            description = ($3)
+        WHERE id = ($1)
+    `;
+    const { rowCount } = await pool.query(query, [id, title, description]);
+    console.log(`Rows updated in foods: ${rowCount}`)
+}
+
 const updateCategory = async (id, title, description) => {
     const query = `
         UPDATE categories
@@ -55,7 +67,18 @@ const updateCategory = async (id, title, description) => {
         WHERE id = ($1)
     `;
     let { rowCount } = await pool.query(query, [id, title, description]);
-    console.log(`Num rows updated: ${rowCount}`);
+    console.log(`Rows updated in categories: ${rowCount}`);
+}
+
+const updateFoodCategory = async (foodId, categoryId) => {
+    const query = `
+        UPDATE food_categories
+        SET
+            category_id = ($2)
+        WHERE food_id = ($1)
+    `;
+    let { rowCount } = await pool.query(query, [foodId, categoryId]);
+    console.log(`Rows updated in food_categories: ${rowCount}`);
 }
 
 const deleteFood = async (id) => {
@@ -65,7 +88,7 @@ const deleteFood = async (id) => {
         WHERE id = ($1)
     `;
     const {rowCount} = await pool.query(query, [id]);
-    console.log(`Num rows deleted from foods: ${rowCount}`);
+    console.log(`Rows deleted from foods: ${rowCount}`);
 }
 
 const deleteCategory = async (id) => {
@@ -81,7 +104,7 @@ const deleteCategory = async (id) => {
         )
     `;
     let { rowCount } = await pool.query(deleteFoodQuery, [id]);
-    console.log(`Num rows deleted from foods: ${rowCount}`);
+    console.log(`Rows deleted from foods: ${rowCount}`);
     // delete category
     const deleteCategoryQuery = `
         DELETE
@@ -89,7 +112,7 @@ const deleteCategory = async (id) => {
         WHERE id = ($1)
     `;
     ({ rowCount } = await pool.query(deleteCategoryQuery, [id]));
-    console.log(`Num rows deleted from categories: ${rowCount}`);
+    console.log(`Rows deleted from categories: ${rowCount}`);
 }
 
 export { 
@@ -97,7 +120,9 @@ export {
     getCategories, 
     getCountFoods, 
     getCountCategories,
+    updateFood,
     updateCategory,
+    updateFoodCategory,
     deleteFood,
     deleteCategory,
 };
