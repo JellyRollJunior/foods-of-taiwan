@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS categories (
 );
 
 CREATE TABLE IF NOT EXISTS food_categories (
-    food_id INTEGER REFERENCES foods (id),
-    category_id INTEGER REFERENCES categories (id),
+    food_id INTEGER REFERENCES foods (id) ON DELETE CASCADE,
+    category_id INTEGER REFERENCES categories (id) ON DELETE CASCADE,
     is_default_value boolean DEFAULT FALSE   
 );
 
