@@ -58,21 +58,35 @@ const updateCategory = async (id, title, description) => {
     console.log(`Num rows updated: ${rowCount}`);
 }
 
-const deleteFood = async (id) => {
-    const deleteFoodCategoryQuery = `
+const deleteFoodCategoryByFoodId = async (id) => {
+    const query = `
         DELETE 
         FROM food_categories
         WHERE food_id = ($1)
     `;
+    const { rowCount } = await pool.query(query, [id]);
+    console.log(`Num rows deleted from food_category: ${rowCount}`);
+}
+
+const deleteFoodCategoryByCategoryId = async (id) => {
+    const query = `
+        DELETE
+        FROM food_categories
+        WHERE category_id = ($1)
+    `;
+    const { rowCount } = await pool.query(query, [id]);
+    console.log(`Num rows deleted from food_categories: ${rowCount}`);
+}
+
+const deleteFood = async (id) => {
+    deleteFoodCategoryByFoodId(id);
     const deleteFoodQuery = `
         DELETE 
         FROM foods
         WHERE id = ($1)
     `;
-    let { rowCount } = await pool.query(deleteFoodCategoryQuery, [id]);
-    console.log(`Num rows delete from food_category: ${rowCount}`);
-    ({rowCount} = await pool.query(deleteFoodQuery, [id]));
-    console.log(`Num rows delete from foods: ${rowCount}`);
+    const {rowCount} = await pool.query(deleteFoodQuery, [id]);
+    console.log(`Num rows deleted from foods: ${rowCount}`);
 }
 
 export { 
