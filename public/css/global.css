@@ -1,0 +1,49 @@
+.text-2x {
+  font-size: 1.4rem;
+}
+
+.text-3x {
+  font-size: 2rem;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.light-gray {
+  color: rgb(75 85 99);
+}
+
+/* CSS for partials */
+/* header.ejs */
+header {
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* nav.ejs */
+a {
+  display: flex;
+  align-items: center;
+
+  margin-left: 16px;
+  text-decoration: none;
+  color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  margin: 24px 0 16px 0;
+  box-shadow: 0 5px 5px 0px rgb(201, 201, 201);
+}
+
+.menu-button {
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+  background-color: white;
+  border: none;
+}
