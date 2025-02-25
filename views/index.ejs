@@ -3,12 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <title><%= title %></title>
   </head>
   <body>
     <%- include ('partials/header.ejs') %>
-    <div>Count foods: <%= countFood %></div>
-    <div>Count categories: <%= countCategories %></div>
+    <main>
+      <div class="rounded-box">
+        <div class="text-2x bold light-gray">Foods</div>
+        <div class="text-3x bold"><%= countFood %></div>
+        <div class="light-gray">Total food entries</div>
+      </div>
+      <div class="rounded-box">
+        <div class="text-2x bold light-gray">Categories</div>
+        <div class="text-3x bold"><%= countCategories %></div>
+        <div class="light-gray">Different types of food</div>
+      </div>
+    </main>
   </body>
 </html>
