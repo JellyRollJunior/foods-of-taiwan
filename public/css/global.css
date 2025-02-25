@@ -22,7 +22,12 @@ header {
 }
 
 /* nav.ejs */
-a {
+nav {
+  box-shadow: 0 5px 5px 0px rgb(201, 201, 201);
+  padding-bottom: 8px;
+}
+
+nav a {
   display: flex;
   align-items: center;
 
@@ -31,12 +36,13 @@ a {
   color: black;
 }
 
-nav {
+.nav-header {
   display: flex;
   justify-content: space-between;
-  height: 50px;
-  margin: 24px 0 16px 0;
-  box-shadow: 0 5px 5px 0px rgb(201, 201, 201);
+  align-items: center;
+
+  height: 36px;
+  margin-top: 24px;
 }
 
 .menu-button {
@@ -46,4 +52,12 @@ nav {
   height: 100%;
   background-color: white;
   border: none;
+}
+
+.menu-links {
+  margin-top: 16px;
+}
+
+.menu-links > a {
+  padding: 3px;
 }
