@@ -1,7 +1,8 @@
 import express from 'express';
-import { indexRouter } from './routes/indexRouter.js';
 import dotenv from 'dotenv';
 import path from 'node:path';
+import { indexRouter } from './routes/indexRouter.js';
+import { foodRouter } from './routes/foodRouter.js';
 
 // setup
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(express.static(assetsPath));
 
 // define routes
 app.use('/', indexRouter);
+app.use('/foods', foodRouter);
 
 // init server
 const PORT = 3000;
