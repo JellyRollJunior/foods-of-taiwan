@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/index.css" />
     <title><%= title %></title>
   </head>
   <body>
     <%- include ('partials/header.ejs') %>
     <%- include ('partials/nav.ejs') %>
     <main>
-      
+      <button>Add New Food</button>
+      <section class="card-holder">
+        <% locals.foods.forEach((food) => { %>
+          <div class="card" data-id=<%=food.id %> >
+            <h3><%= food.title %></h3>
+            <h4 class="ligh-gray"><%= food.category %></h4>
+            <p><%= food.description %></p>
+          </div>
+        <% }) %>
+      </section>
     </main>
   </body>
 </html>

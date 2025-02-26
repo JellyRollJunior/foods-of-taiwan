@@ -5,7 +5,7 @@ const getFoods = databaseHandler(async () => {
     const query = `
         SELECT 
             foods.id AS id,
-            foods.title AS food, 
+            foods.title AS title, 
             categories.title AS category,
             foods.description 
         FROM foods 

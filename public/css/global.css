@@ -22,6 +22,14 @@ html {
   display: none;
 }
 
+.card {
+  border: 2px solid rgb(225, 226, 227);
+  border-radius: 16px;
+  margin: 25px;
+  padding: 18px 20px 16px 20px;
+  background-color: rgb(249 250 251);
+}
+
 /* CSS for partials */
 /* header.ejs */
 header {
