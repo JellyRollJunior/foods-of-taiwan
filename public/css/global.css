@@ -120,6 +120,7 @@ nav a {
 form .card {
   display: flex;
   flex-direction: column;
+  padding-bottom: 24px;
 }
 
 form .card label {
