@@ -7,6 +7,12 @@ const getFoodsPage = async (request, response) => {
         title: 'Taiwanese Food Guide',
         foods,
     });
-}
+};
 
-export { getFoodsPage };
+const getAddFoodPage = async (request, response) => {
+    response.render('addFood', {
+        title: 'Taiwanese Food Guide',
+    });
+};
+
+export { getFoodsPage, getAddFoodPage };
