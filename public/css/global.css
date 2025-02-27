@@ -123,11 +123,15 @@ form .card {
 }
 
 form .card label {
-  margin-top: 12px;
+  margin-top: 16px;
+}
+
+form select {
+  min-height: 32px;
 }
 
 form #description {
-  min-height: 150px;
+  min-height: 180px;
 }
 
 .form-button-holder {

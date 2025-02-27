@@ -10,8 +10,11 @@ const getFoodsPage = async (request, response) => {
 };
 
 const getAddFoodPage = async (request, response) => {
+    const categories = await db.getCategories();
+    console.log(categories);
     response.render('addFood', {
         title: 'Taiwanese Food Guide',
+        categories,
     });
 };
 

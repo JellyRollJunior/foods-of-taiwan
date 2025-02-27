@@ -14,11 +14,15 @@
       <form action="/foods/add" method="POST" class="form-holder">
         <section class="card">
           <h2>Food Details</h2>
-          <label for="title">Title</label>
+          <label for="title" class="text-sm">Title</label>
           <input name="title" type="text" id="title">
-          <label id="category">Category</label>
-          <select name="category" id="category"></select>
-          <label for="description">Description</label>
+          <label for="category" class="text-sm">Category</label>
+          <select name="category" id="category">
+            <% locals.categories.forEach((category) => { %>
+              <option value=<%= category.id %>><%= category.title %></option>
+            <% }) %>
+          </select>
+          <label for="description" class="text-sm">Description</label>
           <textarea name="description" id="description"></textarea>
         </section>
         <section class="form-button-holder">
