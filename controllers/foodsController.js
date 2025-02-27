@@ -18,4 +18,12 @@ const getAddFoodPage = async (request, response) => {
     });
 };
 
-export { getFoodsPage, getAddFoodPage };
+const postAddFood = async (request, response) => {
+    const title = request.body.title;
+    const description = request.body.description;
+    const categoryId = request.body.categoryId;
+    await db.insertFood(title, description, categoryId);
+    response.redirect('/foods');
+};
+
+export { getFoodsPage, getAddFoodPage, postAddFood };

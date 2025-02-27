@@ -15,15 +15,15 @@
         <section class="card">
           <h2>Food Details</h2>
           <label for="title" class="text-sm">Title</label>
-          <input name="title" type="text" id="title">
+          <input name="title" type="text" id="title" required>
           <label for="category" class="text-sm">Category</label>
-          <select name="category" id="category">
+          <select name="categoryId" id="category" required>
             <% locals.categories.forEach((category) => { %>
               <option value=<%= category.id %>><%= category.title %></option>
             <% }) %>
           </select>
           <label for="description" class="text-sm">Description</label>
-          <textarea name="description" id="description"></textarea>
+          <textarea name="description" id="description" required></textarea>
         </section>
         <section class="form-button-holder">
           <button>Cancel</button>
