@@ -11,15 +11,20 @@
     <%- include ('partials/header.ejs') %>
     <%- include ('partials/nav.ejs') %>
     <main>
-      <form action="">
-        <label for="title">Title</label>
-        <input name="title" type="text" id="title">
-        <label id="category">Category</label>
-        <select name="category" id="category"></select>
-        <label for="description">Description</label>
-        <textarea name="description" id="description"></textarea>
-        <button>Cancel</button>
-        <button>Submit</button>
+      <form action="/foods/add" method="POST" class="form-holder">
+        <section class="card">
+          <h2>Food Details</h2>
+          <label for="title">Title</label>
+          <input name="title" type="text" id="title">
+          <label id="category">Category</label>
+          <select name="category" id="category"></select>
+          <label for="description">Description</label>
+          <textarea name="description" id="description"></textarea>
+        </section>
+        <section class="form-button-holder">
+          <button>Cancel</button>
+          <button type="submit">Submit</button>
+        </section>
       </form>
     </main>
   </body>

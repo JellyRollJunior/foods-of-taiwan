@@ -115,3 +115,38 @@ nav a {
 .menu-links > a {
   padding: 3px;
 }
+
+/* Form */
+form .card {
+  display: flex;
+  flex-direction: column;
+}
+
+form .card label {
+  margin-top: 12px;
+}
+
+form #description {
+  min-height: 150px;
+}
+
+.form-button-holder {
+  display: flex;
+  justify-content: center;
+  
+  margin: 0 25px;
+  gap: 12px;
+}
+
+.form-button-holder > * {
+  flex: 1;
+
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+}
+
+.form-button-holder > button[type='submit'] {
+  color: white;
+  background-color: #3838de;
+}
