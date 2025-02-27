@@ -11,11 +11,15 @@
     <%- include ('partials/header.ejs') %>
     <%- include ('partials/nav.ejs') %>
     <main>
-      <button>Add New Food</button>
+      <section class="button-holder">
+        <button class="add-button">
+          <a class="text-sm" href="/foods">Add New Food</a>
+        </button>
+      </section>
       <section class="card-holder">
         <% locals.foods.forEach((food) => { %>
           <div class="card" data-id=<%=food.id %> >
-            <h3 class="text-1-5x"><%= food.title %></h3>
+            <h3 class="text-sm-plus"><%= food.title %></h3>
             <h4 class="light-gray"><%= food.category %></h4>
             <p><%= food.description %></p>
           </div>
