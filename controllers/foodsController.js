@@ -43,8 +43,12 @@ const postAddFood = [
     async (request, response) => {
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            console.log('oops! error');
-            return;
+            const categories = await db.getCategories();
+            return response.status(400).render('addFood', {
+                title: 'Taiwanese Food Guide',
+                categories,
+                errors: errors.array(),
+            });
         }
         const title = request.body.title;
         const description = request.body.description;
