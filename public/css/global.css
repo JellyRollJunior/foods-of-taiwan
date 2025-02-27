@@ -133,6 +133,7 @@ form select {
 
 form #description {
   min-height: 180px;
+  resize: vertical;
 }
 
 .form-button-holder {
@@ -155,3 +156,4 @@ form #description {
   color: white;
   background-color: #3838de;
 }
+

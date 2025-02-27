@@ -1,8 +1,8 @@
 import * as db from '../db/queries.js';
 import { body, validationResult } from 'express-validator';
 
-const lengthErr = 'Must be between 1 and 25 characters';
-const descriptionErr = 'Must be between 1 and 250 characters';
+const lengthErr = 'must be between 1 and 25 characters';
+const descriptionErr = 'must be between 1 and 250 characters';
 const categoryErr = 'Error selecting category';
 
 const validateFood = [
