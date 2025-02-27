@@ -117,6 +117,10 @@ nav a {
 }
 
 /* Form */
+form {
+  padding-bottom: 24px;
+}
+
 form .card {
   display: flex;
   flex-direction: column;
