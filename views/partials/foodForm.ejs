@@ -1,0 +1,21 @@
+<form action=<%= locals.action %> method="POST" class="form-holder">
+  <section class="card">
+    <h2>Food Details</h2>
+    <label for="title" class="text-sm">Title</label>
+    <input name="title" type="text" id="title" minlength="1" maxlength="25" required>
+    <label for="category" class="text-sm">Category</label>
+    <select name="categoryId" id="category" required>
+      <% if (locals.categories) { %>
+        <% locals.categories.forEach((category) => { %>
+          <option value=<%= category.id %>><%= category.title %></option>
+        <% }) %>
+      <% } %>
+    </select>
+    <label for="description" class="text-sm">Description</label>
+    <textarea name="description" id="description" minlength="1" maxlength="250" required></textarea>
+  </section>
+  <section class="form-button-holder">
+    <button>Cancel</button>
+    <button type="submit">Submit</button>
+  </section>
+</form>

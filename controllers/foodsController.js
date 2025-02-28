@@ -1,6 +1,8 @@
 import * as db from '../db/queries.js';
 import { body, validationResult } from 'express-validator';
 
+const ADD_FOOD_ROUTE = '/foods/add';
+
 const lengthErr = 'must be between 1 and 25 characters';
 const descriptionErr = 'must be between 1 and 250 characters';
 const categoryErr = 'Error selecting category';
@@ -34,6 +36,7 @@ const getAddFoodPage = async (request, response) => {
     console.log(categories);
     response.render('addFood', {
         title: 'Taiwanese Food Guide',
+        action: ADD_FOOD_ROUTE,
         categories,
     });
 };
@@ -46,6 +49,7 @@ const postAddFood = [
             const categories = await db.getCategories();
             return response.status(400).render('addFood', {
                 title: 'Taiwanese Food Guide',
+                action: ADD_FOOD_ROUTE,
                 categories,
                 errors: errors.array(),
             });
