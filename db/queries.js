@@ -1,6 +1,23 @@
 import { pool } from './pool.js';
 import { databaseHandler } from './databaseHandler.js';
 
+const getFoodById = databaseHandler(async (id) => {
+    const query = `
+        SELECT 
+            foods.id AS id,
+            foods.title AS title, 
+            categories.title AS category,
+            foods.description 
+        FROM foods 
+        JOIN food_categories ON foods.id = food_categories.food_id 
+        JOIN categories ON food_categories.category_id = categories.id
+        WHERE foods.id = ($1)
+    `;
+    const { rows } = await pool.query(query, [id]);
+    console.log(rows);
+    return rows[0];
+}, 'Error retrieving food');
+
 const getFoods = databaseHandler(async () => {
     const query = `
         SELECT 
@@ -148,15 +165,19 @@ const deleteCategory = databaseHandler(async (id) => {
 }, 'Error deleting category');
 
 export { 
-    getFoods, 
-    getCategories, 
     getCountFoods, 
     getCountCategories,
+
+    getFoodById,
+    getFoods, 
     insertFood,
-    insertCategory,
     updateFood,
-    updateCategory,
-    updateFoodCategory,
     deleteFood,
+
+    getCategories, 
+    insertCategory,
+    updateCategory,
     deleteCategory,
+
+    updateFoodCategory,
 };

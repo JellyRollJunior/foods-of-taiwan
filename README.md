@@ -12,3 +12,4 @@
 - nav bar title parameter + link parameter 
 - desktop + tablet view
 - fix nav shadow blur
+- merge count foods count categories into one db call
