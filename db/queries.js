@@ -75,7 +75,7 @@ const insertFood = databaseHandler(async (title, description, categoryId) => {
     const { rowCount, rows } = await pool.query(query, [title, description]);
     console.log(`Rows inserted into foods: ${rowCount}`);
     // insert into food_categories
-    insertFoodCategory(rows[0].id, categoryId);
+    await insertFoodCategory(rows[0].id, categoryId);
 }, 'Error inserting food');
 
 const insertCategory = databaseHandler(async (title, description) => {
@@ -96,7 +96,7 @@ const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
     console.log(`Rows inserted into food_categories: ${rowCount}`);
 }, 'Error inserting food category');
 
-const updateFood = databaseHandler(async (id, title, description) => {
+const updateFood = databaseHandler(async (id, title, description, categoryId) => {
     const query = `
         UPDATE foods
         SET
@@ -106,6 +106,7 @@ const updateFood = databaseHandler(async (id, title, description) => {
     `;
     const { rowCount } = await pool.query(query, [id, title, description]);
     console.log(`Rows updated in foods: ${rowCount}`)
+    await updateFoodCategory(id, categoryId);
 }, 'Error updating food');
 
 const updateCategory = databaseHandler(async (id, title, description) => {
@@ -179,6 +180,4 @@ export {
     insertCategory,
     updateCategory,
     deleteCategory,
-
-    updateFoodCategory,
 };

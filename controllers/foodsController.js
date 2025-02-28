@@ -77,4 +77,13 @@ const getEditFood = async (request, response) => {
     });
 }
 
-export { getFoodsPage, getAddFoodPage, postAddFood, getEditFood };
+const postEditFood = async (request, response) => {
+    const { foodId } = request.params;
+    const title = request.body.title;
+    const description = request.body.description;
+    const categoryId = request.body.categoryId;
+    await db.updateFood(foodId, title, description, categoryId);
+    response.redirect('/foods');
+}
+
+export { getFoodsPage, getAddFoodPage, postAddFood, getEditFood, postEditFood };

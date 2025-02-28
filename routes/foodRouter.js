@@ -8,5 +8,6 @@ foodRouter.get('/add', foodController.getAddFoodPage);
 foodRouter.post('/add', foodController.postAddFood);
 
 foodRouter.get('/:foodId/edit', foodController.getEditFood);
+foodRouter.post('/:foodId/edit', foodController.postEditFood);
 
 export { foodRouter };
