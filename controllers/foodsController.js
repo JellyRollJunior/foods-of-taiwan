@@ -67,11 +67,13 @@ const postAddFood = [
 const getEditFood = async (request, response) => {
     const { foodId } = request.params;
     const editFoodRoute = `/foods/${foodId}/edit`;
+    const food = await db.getFoodById(foodId);
     const categories = await db.getCategories();
     response.render('editFood', {
         title: 'Taiwanese Food Guide',
         action: editFoodRoute,
         categories,
+        food,
     });
 }
 
