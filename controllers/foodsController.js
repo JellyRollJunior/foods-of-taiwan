@@ -65,7 +65,12 @@ const postAddFood = [
 ];
 
 const getEditFood = async (request, response) => {
-    response.render('editFood');
+    const categories = await db.getCategories();
+    response.render('editFood', {
+        title: 'Taiwanese Food Guide',
+        action: ADD_FOOD_ROUTE,
+        categories,
+    });
 }
 
 export { getFoodsPage, getAddFoodPage, postAddFood, getEditFood };
