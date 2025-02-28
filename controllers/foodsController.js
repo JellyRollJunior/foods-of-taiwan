@@ -1,5 +1,7 @@
+import { response } from 'express';
 import * as db from '../db/queries.js';
 import { body, validationResult } from 'express-validator';
+import { render } from 'ejs';
 
 const ADD_FOOD_ROUTE = '/foods/add';
 
@@ -62,4 +64,8 @@ const postAddFood = [
     },
 ];
 
-export { getFoodsPage, getAddFoodPage, postAddFood };
+const getEditFood = async (request, response) => {
+    response.render('editFood');
+}
+
+export { getFoodsPage, getAddFoodPage, postAddFood, getEditFood };
