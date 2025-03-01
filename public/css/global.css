@@ -39,6 +39,7 @@ main {
 }
 
 .primary-button {
+  color: white;
   background-color: #3838de;
   border: none;
   border-radius: 8px;
@@ -47,6 +48,18 @@ main {
 .primary-button a {
   text-decoration: none;
   color: white;
+}
+
+.secondary-button {
+  color: #fe0000;
+  background-color: white;
+  border: 2px solid #fe0000;
+  border-radius: 8px;
+}
+
+.secondary-button a {
+  text-decoration: none;
+  color: #fe0000;
 }
 
 /* Add New button */
