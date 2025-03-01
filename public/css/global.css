@@ -57,12 +57,13 @@ main {
 
 /* Cards */
 .card {
-  border: 2px solid #FE0000;
+  border: 2px solid #fe0000;
   border-radius: 16px;
   margin: 25px;
   padding: 18px 20px 16px 20px;
   background-color: rgb(249 250 251);
-  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
 .card p {
@@ -74,50 +75,4 @@ main {
   height: 36px;
   width: 80px;
   margin-left: auto;
-}
-
-/* CSS for partials */
-/* Form */
-form {
-  padding-bottom: 24px;
-}
-
-form .card {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 24px;
-}
-
-form .card label {
-  margin-top: 16px;
-}
-
-form select {
-  min-height: 32px;
-}
-
-form #description {
-  min-height: 180px;
-  resize: vertical;
-}
-
-.form-button-holder {
-  display: flex;
-  justify-content: center;
-  
-  margin: 0 25px;
-  gap: 12px;
-}
-
-.form-button-holder > * {
-  flex: 1;
-
-  height: 36px;
-  border: none;
-  border-radius: 8px;
-}
-
-.form-button-holder > button[type='submit'] {
-  color: white;
-  background-color: #3838de;
 }
