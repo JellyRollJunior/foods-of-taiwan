@@ -1,7 +1,8 @@
 nav {
   position: relative;
-  box-shadow: 0 2px 2px 0px #cecece;
   overflow: visible;
+  border-bottom: 2px solid #FE0000;
+  box-shadow: 0 2px 2px 0px #cecece;
 }
 
 nav a {
@@ -36,6 +37,7 @@ nav a {
   width: 100%;
   padding-bottom: 6px;
   background-color: white;
+  border-bottom: 2px solid #FE0000;
   box-shadow: 0 2px 2px 0px #cecece;
 }
 
