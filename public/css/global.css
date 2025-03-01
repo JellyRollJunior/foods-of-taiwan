@@ -77,48 +77,6 @@ main {
 }
 
 /* CSS for partials */
-/* nav.ejs */
-nav {
-  position: relative;
-  box-shadow: 0 2px 2px 0px #cecece;
-  padding-bottom: 8px;
-}
-
-nav a {
-  display: flex;
-  align-items: center;
-
-  margin-left: 16px;
-  text-decoration: none;
-  color: black;
-}
-
-.nav-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  height: 36px;
-  margin-top: 24px;
-}
-
-.menu-button {
-  display: flex;
-  justify-content: center;
-
-  height: 100%;
-  background-color: white;
-  border: none;
-}
-
-.menu-links {
-  margin-top: 16px;
-}
-
-.menu-links > a {
-  padding: 3px;
-}
-
 /* Form */
 form {
   padding-bottom: 24px;
