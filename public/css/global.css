@@ -2,6 +2,10 @@ html {
   font-size: 18px;
 }
 
+.center-text {
+  text-align: center;
+}
+
 .text-sm {
   font-size: 1.1rem;
 }
@@ -33,6 +37,8 @@ html {
 main {
   padding: 1px;
 }
+
+
 
 .primary-button {
   background-color: #3838de;
