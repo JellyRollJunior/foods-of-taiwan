@@ -18,6 +18,7 @@ form select {
 
 form #description {
   min-height: 180px;
+  padding: 2px 2px 2px 6px;
   resize: vertical;
 }
 
