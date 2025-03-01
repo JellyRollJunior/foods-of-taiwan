@@ -77,12 +77,6 @@ main {
 }
 
 /* CSS for partials */
-/* header.ejs */
-header {
-  margin-top: 24px;
-  text-align: center;
-}
-
 /* nav.ejs */
 nav {
   position: relative;
