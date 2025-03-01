@@ -18,10 +18,7 @@ const validateFood = [
         .trim()
         .isLength({ min: 1, max: 250 })
         .withMessage(`Description ${descriptionErr}`),
-    body('categoryId')
-    .trim()
-    .isInt()
-    .withMessage(categoryErr),
+    body('categoryId').trim().isInt().withMessage(categoryErr),
 ];
 
 const getFoodsPage = async (request, response) => {
@@ -75,15 +72,31 @@ const getEditFood = async (request, response) => {
         categories,
         food,
     });
-}
+};
 
-const postEditFood = async (request, response) => {
-    const { foodId } = request.params;
-    const title = request.body.title;
-    const description = request.body.description;
-    const categoryId = request.body.categoryId;
-    await db.updateFood(foodId, title, description, categoryId);
-    response.redirect('/foods');
-}
+const postEditFood = [
+    validateFood,
+    async (request, response) => {
+        const { foodId } = request.params;
+        const errors = validationResult(request);
+        if (!errors.isEmpty()) {
+            const editFoodRoute = `/foods/${foodId}/edit`;
+            const food = await db.getFoodById(foodId);
+            const categories = await db.getCategories();
+            return response.status(400).render('editFood', {
+                title: 'Taiwanese Food Guide',
+                action: editFoodRoute,
+                categories,
+                food,
+                errors: errors.array(),
+            });
+        }
+        const title = request.body.title;
+        const description = request.body.description;
+        const categoryId = request.body.categoryId;
+        await db.updateFood(foodId, title, description, categoryId);
+        response.redirect('/foods');
+    },
+];
 
 export { getFoodsPage, getAddFoodPage, postAddFood, getEditFood, postEditFood };

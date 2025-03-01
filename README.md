@@ -13,3 +13,4 @@
 - desktop + tablet view
 - fix nav shadow blur
 - merge count foods count categories into one db call
+- orderby id
