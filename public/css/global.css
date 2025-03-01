@@ -32,7 +32,6 @@ html {
 
 main {
   padding: 1px;
-  background-color: rgb(255, 187, 187);
 }
 
 .primary-button {
@@ -87,7 +86,7 @@ header {
 /* nav.ejs */
 nav {
   position: relative;
-  box-shadow: 0 5px 8px 0px rgb(190, 190, 190);
+  box-shadow: 0 2px 2px 0px #cecece;
   padding-bottom: 8px;
 }
 
