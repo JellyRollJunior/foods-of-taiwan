@@ -29,6 +29,7 @@ const getFoods = databaseHandler(async () => {
         FROM foods 
         JOIN food_categories ON foods.id = food_categories.food_id 
         JOIN categories ON food_categories.category_id = categories.id
+        ORDER BY id
     `;
     const { rows } = await pool.query(query);
     console.log(rows);
