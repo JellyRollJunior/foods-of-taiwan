@@ -20,6 +20,36 @@ const validateFood = [
     body('categoryId').trim().isInt().withMessage(categoryErr),
 ];
 
+const renderAddFoodsPage = async (response, statusCode = 200, errors) => {
+    const categories = await db.getCategories();
+    console.log(categories);
+    response.status(statusCode).render('addFood', {
+        title: SITE_TITLE,
+        action: ADD_FOOD_ROUTE,
+        categories,
+        errors,
+    });
+};
+
+const renderEditFoodPage = async (
+    request,
+    response,
+    statusCode = 200,
+    errors
+) => {
+    const { foodId } = request.params;
+    const editFoodRoute = `/foods/${foodId}/edit`;
+    const food = await db.getFoodById(foodId);
+    const categories = await db.getCategories();
+    response.status(statusCode).render('editFood', {
+        title: SITE_TITLE,
+        action: editFoodRoute,
+        categories,
+        food,
+        errors,
+    });
+};
+
 const getFoodsPage = async (request, response) => {
     const foods = await db.getFoods();
     console.log(foods);
@@ -30,13 +60,7 @@ const getFoodsPage = async (request, response) => {
 };
 
 const getAddFoodPage = async (request, response) => {
-    const categories = await db.getCategories();
-    console.log(categories);
-    response.render('addFood', {
-        title: 'Taiwanese Food Guide',
-        action: ADD_FOOD_ROUTE,
-        categories,
-    });
+    renderAddFoodsPage(response);
 };
 
 const postAddFood = [
@@ -44,13 +68,8 @@ const postAddFood = [
     async (request, response) => {
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            const categories = await db.getCategories();
-            return response.status(400).render('addFood', {
-                title: 'Taiwanese Food Guide',
-                action: ADD_FOOD_ROUTE,
-                categories,
-                errors: errors.array(),
-            });
+            renderAddFoodsPage(response, 400, errors.array());
+            return;
         }
         const title = request.body.title;
         const description = request.body.description;
@@ -60,28 +79,8 @@ const postAddFood = [
     },
 ];
 
-const renderEditFoodPage = async (
-    request,
-    response,
-    title,
-    statusCode = 200,
-    errors
-) => {
-    const { foodId } = request.params;
-    const editFoodRoute = `/foods/${foodId}/edit`;
-    const food = await db.getFoodById(foodId);
-    const categories = await db.getCategories();
-    response.status(statusCode).render('editFood', {
-        title,
-        action: editFoodRoute,
-        categories,
-        food,
-        errors,
-    });
-};
-
 const getEditFood = async (request, response) => {
-    renderEditFoodPage(request, response, SITE_TITLE);
+    renderEditFoodPage(request, response);
 };
 
 const postEditFood = [
@@ -89,13 +88,7 @@ const postEditFood = [
     async (request, response) => {
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            renderEditFoodPage(
-                request,
-                response,
-                SITE_TITLE,
-                400,
-                errors.array()
-            );
+            renderEditFoodPage(request, response, 400, errors.array());
             return;
         }
         const { foodId } = request.params;
