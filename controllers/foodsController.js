@@ -1,8 +1,7 @@
-import { response } from 'express';
 import * as db from '../db/queries.js';
 import { body, validationResult } from 'express-validator';
-import { render } from 'ejs';
 
+const SITE_TITLE = 'Taiwanese Food Guide';
 const ADD_FOOD_ROUTE = '/foods/add';
 
 const lengthErr = 'must be between 1 and 25 characters';
@@ -61,36 +60,45 @@ const postAddFood = [
     },
 ];
 
-const getEditFood = async (request, response) => {
+const renderEditFoodPage = async (
+    request,
+    response,
+    title,
+    statusCode = 200,
+    errors
+) => {
     const { foodId } = request.params;
     const editFoodRoute = `/foods/${foodId}/edit`;
     const food = await db.getFoodById(foodId);
     const categories = await db.getCategories();
-    response.render('editFood', {
-        title: 'Taiwanese Food Guide',
+    response.status(statusCode).render('editFood', {
+        title,
         action: editFoodRoute,
         categories,
         food,
+        errors,
     });
+};
+
+const getEditFood = async (request, response) => {
+    renderEditFoodPage(request, response, SITE_TITLE);
 };
 
 const postEditFood = [
     validateFood,
     async (request, response) => {
-        const { foodId } = request.params;
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            const editFoodRoute = `/foods/${foodId}/edit`;
-            const food = await db.getFoodById(foodId);
-            const categories = await db.getCategories();
-            return response.status(400).render('editFood', {
-                title: 'Taiwanese Food Guide',
-                action: editFoodRoute,
-                categories,
-                food,
-                errors: errors.array(),
-            });
+            renderEditFoodPage(
+                request,
+                response,
+                SITE_TITLE,
+                400,
+                errors.array()
+            );
+            return;
         }
+        const { foodId } = request.params;
         const title = request.body.title;
         const description = request.body.description;
         const categoryId = request.body.categoryId;
