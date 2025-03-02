@@ -16,6 +16,8 @@ const validateCategory = [
         .withMessage(`Description ${DESCRIPTION_ERROR}`),
 ];
 
+
+
 const getCategoriesPage = async (request, response) => {
     const categories = await db.getCategories();
     response.render('categories', {
@@ -47,14 +49,19 @@ const postAddCategory = [
     },
 ];
 
-const getEditCategory = async (request, response) => {
+const renderEditCategoryPage = async (request, response, statusCode = 200, errors) => {
     const { categoryId } = request.params;
     const editCategoryRoute = `/categories/${categoryId}/edit`;
     const category = await db.getCategoryById(categoryId);
-    response.render('editCategory', {
+    response.status(statusCode).render('editCategory', {
         action: editCategoryRoute,
         category,
+        errors,
     });
+}
+
+const getEditCategory = async (request, response) => {
+    renderEditCategoryPage(request, response);
 };
 
 const postEditCategory = [
@@ -62,14 +69,7 @@ const postEditCategory = [
     async (request, response) => {
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            const { categoryId } = request.params;
-            const editCategoryRoute = `/categories/${categoryId}/edit`;
-            const category = await db.getCategoryById(categoryId);
-            response.render('editCategory', {
-                action: editCategoryRoute,
-                category,
-                errors: errors.array(),
-            });
+            renderEditCategoryPage(request, response, 400, errors.array());
             return;
         }
         const { categoryId } = request.params;
