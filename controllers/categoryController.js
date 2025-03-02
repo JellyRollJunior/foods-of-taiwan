@@ -7,4 +7,8 @@ const getCategoriesPage = async (request, response) => {
     });
 };
 
-export { getCategoriesPage };
+const getAddCategoriesPage = async (request, response) => {
+    response.render('addCategory');
+}
+
+export { getCategoriesPage, getAddCategoriesPage };
