@@ -64,7 +64,12 @@ const postAddCategory = [
 ];
 
 const getEditCategory = async (request, response) => {
+    // validate categoryId
     const { categoryId } = request.params;
+    if (!Number.isInteger(Number(categoryId))) {
+        console.log('Error retrieving category');
+        return;
+    };
     const category = await db.getCategoryById(categoryId);
     renderEditCategoryPage(request, response, category);
 };
@@ -74,7 +79,10 @@ const postEditCategory = [
     async (request, response) => {
         // validate categoryId
         const { categoryId } = request.params;
-        if (!Number.isInteger(Number(categoryId))) return;
+        if (!Number.isInteger(Number(categoryId))) {
+            console.log('Error retrieving category');
+            return;
+        };
         const category = await db.getCategoryById(categoryId);
         // verify category is not default
         if (category.default) {

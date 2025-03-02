@@ -39,7 +39,10 @@ const renderEditFoodPage = async (
 ) => {
     // validate foodId
     const { foodId } = request.params;
-    if (!Number.isInteger(Number(foodId))) return;
+    if (!Number.isInteger(Number(foodId))) {
+        console.log('Error retrieving food');
+        return;
+    }
     const food = await db.getFoodById(foodId);
     const editFoodRoute = `/foods/${foodId}/edit`;
     const categories = await db.getCategories();
@@ -84,7 +87,10 @@ const postAddFood = [
 const getEditFood = async (request, response) => {
     // validate foodId
     const { foodId } = request.params;
-    if (!Number.isInteger(Number(foodId))) return;
+    if (!Number.isInteger(Number(foodId))) {
+        console.log('Error retrieving food');
+        return;
+    }
     const food = await db.getFoodById(foodId);
     renderEditFoodPage(request, response, food);
 };
@@ -94,7 +100,10 @@ const postEditFood = [
     async (request, response) => {
         // validate foodId
         const { foodId } = request.params;
-        if (!Number.isInteger(Number(foodId))) return;
+        if (!Number.isInteger(Number(foodId))) {
+            console.log('Error retrieving food');
+            return;
+        }
         const food = await db.getFoodById(foodId);
         // verify food is not default
         if (food.default) {
