@@ -1,1 +1,18 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <title>Foods of Taiwan</title>
+  </head>
+  <body>
+    <%- include ('partials/nav.ejs') %>
+    <main>        
+      <h2 class="card center-text">Add New Category</h2>
+      <%- include ('partials/error.ejs') %>
+      <%- include ('partials/categoryForm.ejs') %>
+    </main>
+  </body>
+</html>

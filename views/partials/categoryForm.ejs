@@ -4,25 +4,13 @@
     <h2>Food Details</h2>
     <label for="title" class="text-sm">Title</label>
     <input name="title" type="text" id="title" minlength="1" maxlength="25"
-      <% if (locals.food) { %>
-        value="<%= food.title %>"
+      <% if (locals.category) { %>
+        value="<%= category.title %>"
       <% } %>
     required>
-    <label for="category" class="text-sm">Category</label>
-    <select name="categoryId" id="category" required>
-      <% if (locals.categories) { %>
-        <% locals.categories.forEach((category) => { %>
-          <option value=<%= category.id %> 
-            <% if (locals.food && food.category_id == category.id) { %>
-              selected="selected"
-            <% } %>
-          ><%= category.title %></option>
-        <% }) %>
-      <% } %>
-    </select>
     <label for="description" class="text-sm">Description</label>
     <textarea name="description" id="description" minlength="1" maxlength="400" required
-      ><% if (locals.food) { %><%= food.description %><% } %></textarea>
+      ><% if (locals.category) { %><%= category.description %><% } %></textarea>
   </section>
   <section class="form-button-holder">
     <button class="secondary-button bold" type="button"><a href="/foods">Cancel</a></button>
