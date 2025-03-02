@@ -69,7 +69,7 @@ const getEditCategory = async (request, response) => {
     if (!Number.isInteger(Number(categoryId))) {
         console.log('Error retrieving category');
         return;
-    };
+    }
     const category = await db.getCategoryById(categoryId);
     renderEditCategoryPage(request, response, category);
 };
@@ -82,7 +82,7 @@ const postEditCategory = [
         if (!Number.isInteger(Number(categoryId))) {
             console.log('Error retrieving category');
             return;
-        };
+        }
         // verify category is not default
         const category = await db.getCategoryById(categoryId);
         if (category.default) {
@@ -107,10 +107,28 @@ const postEditCategory = [
     },
 ];
 
+const deleteCategory = async (request, response) => {
+    // validate categoryId
+    const { categoryId } = request.params;
+    if (!Number.isInteger(Number(categoryId))) {
+        console.log('Error retrieving category');
+        return;
+    }
+    // verify category is not default
+    const category = await db.getCategoryById(categoryId);
+    if (category.default) {
+        console.log('Default entry cannot be edited');
+        return;
+    }
+    await db.deleteCategory(categoryId);
+    response.redirect('/categories');
+};
+
 export {
     getCategoriesPage,
     getAddCategoriesPage,
     postAddCategory,
     getEditCategory,
     postEditCategory,
+    deleteCategory,
 };

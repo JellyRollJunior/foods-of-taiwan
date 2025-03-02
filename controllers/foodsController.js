@@ -138,7 +138,6 @@ const deleteFood = async (request, response) => {
     }
     await db.deleteFood(foodId);
     response.redirect('/foods');
-    return;
 };
 
 export {
