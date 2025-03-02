@@ -73,6 +73,11 @@ const postEditCategory = [
             return;
         }
         const { categoryId } = request.params;
+        const category = await db.getCategoryById(categoryId);
+        if (category.default) {
+            console.log('Cannot edit default entry');
+            return;
+        }
         const title = request.body.title;
         const description = request.body.description;
         await db.updateCategory(categoryId, title, description);
