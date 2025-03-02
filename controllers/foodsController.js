@@ -103,7 +103,10 @@ const postEditFood = [
 const deleteFood = async (request, response) => {
     const { foodId } = request.params;
     if (Number.isInteger(Number(foodId))) {
-        await db.deleteFood(foodId);
+        const food = await db.getFoodById(foodId);
+        if (!food.default) {
+            await db.deleteFood(foodId);
+        }
     }
     console.log('Error deleting food');
     response.redirect('/foods');
