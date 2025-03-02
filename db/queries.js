@@ -38,6 +38,21 @@ const getFoods = databaseHandler(async () => {
     return rows;
 }, 'Error retrieving foods');
 
+const getCategoryById = databaseHandler(async (id) => {
+    const query = `
+        SELECT
+            id,
+            title,
+            description,
+            is_default_value AS default
+        FROM categories
+        WHERE id = ($1)
+    `;
+    const { rows } = await pool.query(query, [id]);
+    console.log(rows);
+    return rows[0];
+}, 'Error retrieving category');
+
 const getCategories = databaseHandler(async () => {
     const query = `
         SELECT
@@ -103,18 +118,21 @@ const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
     console.log(`Rows inserted into food_categories: ${rowCount}`);
 }, 'Error inserting food category');
 
-const updateFood = databaseHandler(async (id, title, description, categoryId) => {
-    const query = `
+const updateFood = databaseHandler(
+    async (id, title, description, categoryId) => {
+        const query = `
         UPDATE foods
         SET
             title = ($2),
             description = ($3)
         WHERE id = ($1)
     `;
-    const { rowCount } = await pool.query(query, [id, title, description]);
-    console.log(`Rows updated in foods: ${rowCount}`)
-    await updateFoodCategory(id, categoryId);
-}, 'Error updating food');
+        const { rowCount } = await pool.query(query, [id, title, description]);
+        console.log(`Rows updated in foods: ${rowCount}`);
+        await updateFoodCategory(id, categoryId);
+    },
+    'Error updating food'
+);
 
 const updateCategory = databaseHandler(async (id, title, description) => {
     const query = `
@@ -145,7 +163,7 @@ const deleteFood = databaseHandler(async (id) => {
         FROM foods
         WHERE id = ($1)
     `;
-    const {rowCount} = await pool.query(query, [id]);
+    const { rowCount } = await pool.query(query, [id]);
     console.log(`Rows deleted from foods: ${rowCount}`);
 }, 'Error deleting food');
 
@@ -173,17 +191,16 @@ const deleteCategory = databaseHandler(async (id) => {
     console.log(`Rows deleted from categories: ${rowCount}`);
 }, 'Error deleting category');
 
-export { 
-    getCountFoods, 
+export {
+    getCountFoods,
     getCountCategories,
-
     getFoodById,
-    getFoods, 
+    getFoods,
     insertFood,
     updateFood,
     deleteFood,
-
-    getCategories, 
+    getCategoryById,
+    getCategories,
     insertCategory,
     updateCategory,
     deleteCategory,

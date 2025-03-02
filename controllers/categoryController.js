@@ -49,9 +49,11 @@ const postAddCategory = [
 
 const getEditCategory = async (request, response) => {
     const { categoryId } = request.params;
-    const EDIT_CATEGORY_ROUTE = `/categories/${categoryId}/edit`;
+    const editCategoryRoute = `/categories/${categoryId}/edit`;
+    const category = await db.getCategoryById(categoryId);
     response.render('editCategory', {
-        action: EDIT_CATEGORY_ROUTE,
+        action: editCategoryRoute,
+        category,
     });
 };
 
