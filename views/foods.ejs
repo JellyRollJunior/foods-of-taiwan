@@ -23,7 +23,9 @@
             <p><%= food.description %></p>
             <div class="button-holder">
               <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
-              <button class="secondary-button bold">Delete</button>
+              <form action="/foods/<%= food.id %>/delete" method="post">
+                <button class="secondary-button bold">Delete</button>
+              </form>
             </div>
           </div>
         <% }) %>

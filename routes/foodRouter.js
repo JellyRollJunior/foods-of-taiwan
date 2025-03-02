@@ -10,4 +10,6 @@ foodRouter.post('/add', foodController.postAddFood);
 foodRouter.get('/:foodId/edit', foodController.getEditFood);
 foodRouter.post('/:foodId/edit', foodController.postEditFood);
 
+foodRouter.post('/:foodId/delete', foodController.deleteFood);
+
 export { foodRouter };

@@ -95,7 +95,7 @@ main {
   margin-top: 12px;
 }
 
-.button-holder > button {
+.button-holder button {
   min-height: 36px;
   min-width: 70px;
 }
