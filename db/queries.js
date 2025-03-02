@@ -8,7 +8,8 @@ const getFoodById = databaseHandler(async (id) => {
             foods.title AS title,
             categories.id As category_id,
             categories.title AS category,
-            foods.description 
+            foods.description,
+            foods.is_default_value AS default
         FROM foods 
         JOIN food_categories ON foods.id = food_categories.food_id 
         JOIN categories ON food_categories.category_id = categories.id
@@ -25,7 +26,8 @@ const getFoods = databaseHandler(async () => {
             foods.id AS id,
             foods.title AS title, 
             categories.title AS category,
-            foods.description 
+            foods.description,
+            foods.is_default_value AS default
         FROM foods 
         JOIN food_categories ON foods.id = food_categories.food_id 
         JOIN categories ON food_categories.category_id = categories.id

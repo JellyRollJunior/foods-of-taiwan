@@ -23,12 +23,14 @@
             <p><%= food.description %></p>
             <div class="button-holder">
               <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
-              <form action="/foods/<%= food.id %>/delete" method="post">
-                <button class="secondary-button bold">Delete</button>
-              </form>
+              <% if (!food.default) { %>
+                <form action="/foods/<%= food.id %>/delete" method="post">
+                  <button class="secondary-button bold">Delete</button>
+                </form>
+              <% }; %>
             </div>
           </div>
-        <% }) %>
+        <% }); %>
       </section>
     </main>
   </body>
