@@ -37,7 +37,9 @@ INSERT INTO foods (is_default_value, title, description) VALUES
 INSERT INTO categories (is_default_value, title, description) VALUES
     (TRUE, 'Street food', 'Cheap eats commonly sold from roadside stalls or in night markets'),
     (TRUE, 'Fine dining', 'Dishes that are typically served at a restaurant and cost (usually) a pretty penny!'),
-    (TRUE, 'Drinks/Snacks', 'Common drinks / snacks typically found in grocery stores or convenience stores.');
+    (TRUE, 'Drinks/Snacks', 'Common drinks / snacks typically found in grocery stores or convenience stores.'),
+    (TRUE, 'I am a test category 1', 'Please feel free to delete or edit me without guilt of removing neat information!'),
+    (TRUE, 'I am a test category 2', 'Please feel free to delete or edit me without guilt of removing neat information!');
 
 INSERT INTO food_categories (is_default_value, food_id, category_id) VALUES
     (TRUE, 1, 1),
@@ -45,5 +47,5 @@ INSERT INTO food_categories (is_default_value, food_id, category_id) VALUES
     (TRUE, 3, 2),
     (TRUE, 4, 3),
     (TRUE, 5, 1),
-    (TRUE, 6, 2),
-    (TRUE, 7, 3);
+    (TRUE, 6, 4),
+    (TRUE, 7, 5);
