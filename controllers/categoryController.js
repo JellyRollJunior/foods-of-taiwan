@@ -5,7 +5,6 @@ const ADD_CATEGORY_ROUTE = '/categories/add';
 
 const LENGTH_ERROR = 'must be between 1 and 25 characters';
 const DESCRIPTION_ERROR = 'must be between 1 and 250 characters';
-
 const validateCategory = [
     body('title')
         .trim()
