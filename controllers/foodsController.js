@@ -43,7 +43,6 @@ const renderEditFoodPage = async (
         console.log('Error retrieving food');
         return;
     }
-    const food = await db.getFoodById(foodId);
     const editFoodRoute = `/foods/${foodId}/edit`;
     const categories = await db.getCategories();
     response.status(statusCode).render('editFood', {
