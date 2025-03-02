@@ -27,12 +27,23 @@ CREATE TABLE IF NOT EXISTS food_categories (
 -- Insert foods
 INSERT INTO foods (is_default_value, title, description) VALUES 
     (TRUE, 'Pork blood rice cake', 'A rice cake that is made of congealed pork blood and rice (tastes much better than it sounds!). Normally steamed then dusted with finely chopped nuts, a thick soy sauce based sauce, and cilantro. Served on a stick and enjoyed with or without spicy sauce. A staple of night market stall food!'),
-    (TRUE, 'Oyster omlet', 'An egg/tapioca mixture with green onions that is pan fried with oysters. Often enjoyed with a thick soy sauce. The chewy texture of the egg tapioca omlet pairs wonderfully with the salty soy sauce and oyster flavor!');
+    (TRUE, 'Oyster omlet', 'An egg/tapioca mixture with green onions that is pan fried with oysters. Often enjoyed with a thick soy sauce. The chewy texture of the egg tapioca omlet pairs wonderfully with the salty soy sauce and oyster flavor!'),
+    (TRUE, 'Roast duck', 'Whole roasted duck with it''s signature crispy skin! Typically, the chef will bring the entire duck out and cut pieces of the cripsy skin in front of the table. A variety of dishes are then made using the skin and the meat.'),
+    (TRUE, 'Guava juice', 'Juice made with guava; guava is a deliciously refreshing fruit with a big crispy crunch when bitten into.'),
+    (TRUE, 'Tea eggs', 'Wonderfully fragrant boiled eggs marinated in a tea based marinade. The surface of the egg is stained brown from the marinade infusing with the egg. Yummy!'),
+    (FALSE, 'I am a test item', 'Please feel free to delete or edit me without guilt of removing neat information!'),
+    (FALSE, 'I am a test item 2', 'Please feel free to delete or edit me without guilt of removing neat information!');
 
 INSERT INTO categories (is_default_value, title, description) VALUES
     (TRUE, 'Street food', 'Cheap eats commonly sold from roadside stalls or in night markets'),
-    (TRUE, 'Fine dining', 'Dishes that are typically served at a restaurant and cost (usually) a pretty penny!');
+    (TRUE, 'Fine dining', 'Dishes that are typically served at a restaurant and cost (usually) a pretty penny!'),
+    (TRUE, 'Drinks/Snacks', 'Common drinks / snacks typically found in grocery stores or convenience stores.');
 
 INSERT INTO food_categories (is_default_value, food_id, category_id) VALUES
     (TRUE, 1, 1),
-    (TRUE, 2, 1);
+    (TRUE, 2, 1),
+    (TRUE, 3, 2),
+    (TRUE, 4, 3),
+    (TRUE, 5, 1),
+    (TRUE, 6, 2),
+    (TRUE, 7, 3);
