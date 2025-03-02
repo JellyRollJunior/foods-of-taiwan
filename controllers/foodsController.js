@@ -4,20 +4,22 @@ import { body, validationResult } from 'express-validator';
 const SITE_TITLE = 'Taiwanese Food Guide';
 const ADD_FOOD_ROUTE = '/foods/add';
 
-const lengthErr = 'must be between 1 and 25 characters';
-const descriptionErr = 'must be between 1 and 250 characters';
-const categoryErr = 'Error selecting category';
-
+const LENGTH_ERROR = 'must be between 1 and 25 characters';
+const DESCRIPTION_ERROR = 'must be between 1 and 250 characters';
+const CATEGORY_ERROR = 'Error selecting category';
 const validateFood = [
     body('title')
         .trim()
         .isLength({ min: 1, max: 25 })
-        .withMessage(`Title ${lengthErr}`),
+        .withMessage(`Title ${LENGTH_ERROR}`),
     body('description')
         .trim()
-        .isLength({ min: 1, max: 250 })
-        .withMessage(`Description ${descriptionErr}`),
-    body('categoryId').trim().isInt().withMessage(categoryErr),
+        .isLength({ min: 1, max: 400 })
+        .withMessage(`Description ${DESCRIPTION_ERROR}`),
+    body('categoryId')
+        .trim()
+        .isInt()
+        .withMessage(CATEGORY_ERROR),
 ];
 
 const renderAddFoodsPage = async (response, statusCode = 200, errors) => {

@@ -5,5 +5,6 @@ const categoryRouter = Router();
 categoryRouter.get('/', categoryController.getCategoriesPage);
 
 categoryRouter.get('/add', categoryController.getAddCategoriesPage);
+categoryRouter.post('/add', categoryController.postAddCategory);
 
 export { categoryRouter };
