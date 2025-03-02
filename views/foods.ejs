@@ -21,7 +21,10 @@
             <h3 class="text-sm-plus"><%= food.title %></h3>
             <h4 class="light-gray"><%= food.category %></h4>
             <p><%= food.description %></p>
-            <button class="edit-button primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
+            <div class="button-holder">
+              <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
+              <button class="secondary-button bold">Delete</button>
+            </div>
           </div>
         <% }) %>
       </section>

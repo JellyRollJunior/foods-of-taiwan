@@ -87,9 +87,15 @@ main {
   margin-top: 16px;
 }
 
-.edit-button {
-  display: block;
-  height: 36px;
-  width: 80px;
-  margin-left: auto;
+.button-holder {
+  display: flex;
+  justify-content: end;
+  gap: 6px;
+
+  margin-top: 12px;
+}
+
+.button-holder > button {
+  min-height: 36px;
+  min-width: 70px;
 }
