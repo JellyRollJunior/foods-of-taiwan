@@ -92,6 +92,11 @@ const postEditFood = [
             return;
         }
         const { foodId } = request.params;
+        const food = await db.getFoodById(foodId);
+        if (food.default) {
+            console.log('Cannot edit default entry');
+            return;
+        }
         const title = request.body.title;
         const description = request.body.description;
         const categoryId = request.body.categoryId;
