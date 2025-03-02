@@ -40,7 +40,11 @@ const getFoods = databaseHandler(async () => {
 
 const getCategories = databaseHandler(async () => {
     const query = `
-        SELECT * 
+        SELECT
+            id,
+            title,
+            description,
+            is_default_value AS default
         FROM categories
     `;
     const { rows } = await pool.query(query);

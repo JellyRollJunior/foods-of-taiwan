@@ -1,1 +1,38 @@
-<h1>hello world</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <title>Foods of Taiwan</title>
+  </head>
+  <body>
+    <%- include ('partials/nav.ejs') %>
+    <main>
+      <section class="add-button-holder">
+        <button class="add-button primary-button">
+          <a class="text-sm" href="">Add New Category</a>
+        </button>
+      </section>
+      <section class="card-holder">
+        <% locals.categories.forEach((category) => { %>
+          <div class="card" data-id=<%= category.id %>>
+            <h3 class="text-sm-plus"><%= category.title %></h3>
+            <p><%= category.description %></p>
+            <div class="button-holder">
+              <% if (!category.default) { %>
+                <button class="primary-button"><a href="">Edit</a></button>
+                <form action="" method="post">
+                  <button class="secondary-button bold">Delete</button>
+                </form>
+              <% } else { %>
+                <h5>Default</h5>
+              <% } %>
+            </div>
+          </div>
+        <% }); %>
+      </section>
+    </main>
+  </body>
+</html>
