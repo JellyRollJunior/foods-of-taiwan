@@ -104,8 +104,8 @@ const postEditFood = [
             console.log('Error retrieving food');
             return;
         }
-        const food = await db.getFoodById(foodId);
         // verify food is not default
+        const food = await db.getFoodById(foodId);
         if (food.default) {
             console.log('Cannot edit default entry');
             return;
@@ -125,14 +125,19 @@ const postEditFood = [
 ];
 
 const deleteFood = async (request, response) => {
+    // validate foodId
     const { foodId } = request.params;
-    if (Number.isInteger(Number(foodId))) {
-        const food = await db.getFoodById(foodId);
-        if (!food.default) {
-            await db.deleteFood(foodId);
-        }
+    if (!Number.isInteger(Number(foodId))) {
+        console.log('Error deleting food');
+        return;
     }
-    console.log('Error deleting food');
+    // verify food is not default
+    const food = await db.getFoodById(foodId);
+    if (food.default) {
+        console.log('Default entries cannot be deleted');
+        return;
+    }
+    await db.deleteFood(foodId);
     response.redirect('/foods');
     return;
 };

@@ -83,8 +83,8 @@ const postEditCategory = [
             console.log('Error retrieving category');
             return;
         };
-        const category = await db.getCategoryById(categoryId);
         // verify category is not default
+        const category = await db.getCategoryById(categoryId);
         if (category.default) {
             console.log('Default entry cannot be edited');
             return;
