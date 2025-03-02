@@ -49,10 +49,9 @@ const postAddCategory = [
     },
 ];
 
-const renderEditCategoryPage = async (request, response, statusCode = 200, errors) => {
+const renderEditCategoryPage = async (request, response, category, statusCode = 200, errors) => {
     const { categoryId } = request.params;
     const editCategoryRoute = `/categories/${categoryId}/edit`;
-    const category = await db.getCategoryById(categoryId);
     response.status(statusCode).render('editCategory', {
         action: editCategoryRoute,
         category,
@@ -61,19 +60,20 @@ const renderEditCategoryPage = async (request, response, statusCode = 200, error
 }
 
 const getEditCategory = async (request, response) => {
-    renderEditCategoryPage(request, response);
+    const { categoryId } = request.params;
+    const category = await db.getCategoryById(categoryId);
+    renderEditCategoryPage(request, response, category);
 };
 
 const postEditCategory = [
     validateCategory,
     async (request, response) => {
         const errors = validationResult(request);
-        if (!errors.isEmpty()) {
-            renderEditCategoryPage(request, response, 400, errors.array());
-            return;
-        }
         const { categoryId } = request.params;
         const category = await db.getCategoryById(categoryId);
+        if (!errors.isEmpty()) {
+            return renderEditCategoryPage(request, response, category, 400, errors.array());
+        }
         if (category.default) {
             console.log('Cannot edit default entry');
             return;
