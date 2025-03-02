@@ -47,4 +47,17 @@ const postAddCategory = [
     },
 ];
 
-export { getCategoriesPage, getAddCategoriesPage, postAddCategory };
+const getEditCategory = async (request, response) => {
+    const { categoryId } = request.params;
+    const EDIT_CATEGORY_ROUTE = `/categories/${categoryId}/edit`;
+    response.render('editCategory', {
+        action: EDIT_CATEGORY_ROUTE,
+    });
+};
+
+export {
+    getCategoriesPage,
+    getAddCategoriesPage,
+    postAddCategory,
+    getEditCategory,
+};

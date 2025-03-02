@@ -22,7 +22,7 @@
             <p><%= category.description %></p>
             <div class="button-holder">
               <% if (!category.default) { %>
-                <button class="primary-button"><a href="">Edit</a></button>
+                <button class="primary-button"><a href="/categories/<%= category.id %>/edit">Edit</a></button>
                 <form action="" method="post">
                   <button class="secondary-button bold">Delete</button>
                 </form>

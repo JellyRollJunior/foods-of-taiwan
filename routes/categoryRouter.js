@@ -7,4 +7,6 @@ categoryRouter.get('/', categoryController.getCategoriesPage);
 categoryRouter.get('/add', categoryController.getAddCategoriesPage);
 categoryRouter.post('/add', categoryController.postAddCategory);
 
+categoryRouter.get('/:categoryId/edit', categoryController.getEditCategory)
+
 export { categoryRouter };
