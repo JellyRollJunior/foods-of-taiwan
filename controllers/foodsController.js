@@ -16,10 +16,7 @@ const validateFood = [
         .trim()
         .isLength({ min: 1, max: 400 })
         .withMessage(`Description ${DESCRIPTION_ERROR}`),
-    body('categoryId')
-        .trim()
-        .isInt()
-        .withMessage(CATEGORY_ERROR),
+    body('categoryId').trim().isInt().withMessage(CATEGORY_ERROR),
 ];
 
 const renderAddFoodsPage = async (response, statusCode = 200, errors) => {
@@ -36,12 +33,15 @@ const renderAddFoodsPage = async (response, statusCode = 200, errors) => {
 const renderEditFoodPage = async (
     request,
     response,
+    food,
     statusCode = 200,
     errors
 ) => {
+    // validate foodId
     const { foodId } = request.params;
-    const editFoodRoute = `/foods/${foodId}/edit`;
+    if (!Number.isInteger(Number(foodId))) return;
     const food = await db.getFoodById(foodId);
+    const editFoodRoute = `/foods/${foodId}/edit`;
     const categories = await db.getCategories();
     response.status(statusCode).render('editFood', {
         title: SITE_TITLE,
@@ -82,7 +82,11 @@ const postAddFood = [
 ];
 
 const getEditFood = async (request, response) => {
-    renderEditFoodPage(request, response);
+    // validate foodId
+    const { foodId } = request.params;
+    if (!Number.isInteger(Number(foodId))) return;
+    const food = await db.getFoodById(foodId);
+    renderEditFoodPage(request, response, food);
 };
 
 const postEditFood = [
@@ -100,7 +104,7 @@ const postEditFood = [
         // validate form
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            renderEditFoodPage(request, response, 400, errors.array());
+            renderEditFoodPage(request, response, food, 400, errors.array());
             return;
         }
         const title = request.body.title;
