@@ -16,7 +16,13 @@ const validateCategory = [
         .withMessage(`Description ${DESCRIPTION_ERROR}`),
 ];
 
-const renderEditCategoryPage = async (request, response, category, statusCode = 200, errors) => {
+const renderEditCategoryPage = async (
+    request,
+    response,
+    category,
+    statusCode = 200,
+    errors
+) => {
     const { categoryId } = request.params;
     const editCategoryRoute = `/categories/${categoryId}/edit`;
     response.status(statusCode).render('editCategory', {
@@ -24,7 +30,7 @@ const renderEditCategoryPage = async (request, response, category, statusCode = 
         category,
         errors,
     });
-}
+};
 
 const getCategoriesPage = async (request, response) => {
     const categories = await db.getCategories();
@@ -70,15 +76,21 @@ const postEditCategory = [
         const { categoryId } = request.params;
         if (!Number.isInteger(Number(categoryId))) return;
         const category = await db.getCategoryById(categoryId);
-        // validate form
-        const errors = validationResult(request);
-        if (!errors.isEmpty()) {
-            return renderEditCategoryPage(request, response, category, 400, errors.array());
-        }
         // verify category is not default
         if (category.default) {
             console.log('Default entry cannot be edited');
             return;
+        }
+        // validate form
+        const errors = validationResult(request);
+        if (!errors.isEmpty()) {
+            return renderEditCategoryPage(
+                request,
+                response,
+                category,
+                400,
+                errors.array()
+            );
         }
         const title = request.body.title;
         const description = request.body.description;

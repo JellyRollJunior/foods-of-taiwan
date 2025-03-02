@@ -88,15 +88,19 @@ const getEditFood = async (request, response) => {
 const postEditFood = [
     validateFood,
     async (request, response) => {
+        // validate foodId
+        const { foodId } = request.params;
+        if (!Number.isInteger(Number(foodId))) return;
+        const food = await db.getFoodById(foodId);
+        // verify food is not default
+        if (food.default) {
+            console.log('Cannot edit default entry');
+            return;
+        }
+        // validate form
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
             renderEditFoodPage(request, response, 400, errors.array());
-            return;
-        }
-        const { foodId } = request.params;
-        const food = await db.getFoodById(foodId);
-        if (food.default) {
-            console.log('Cannot edit default entry');
             return;
         }
         const title = request.body.title;
