@@ -57,9 +57,18 @@ const getEditCategory = async (request, response) => {
     });
 };
 
+const postEditCategory = async (request, response) => {
+    const { categoryId } = request.params;
+    const title = request.body.title;
+    const description = request.body.description;
+    await db.updateCategory(categoryId, title, description);
+    response.redirect('/categories');
+}
+
 export {
     getCategoriesPage,
     getAddCategoriesPage,
     postAddCategory,
     getEditCategory,
+    postEditCategory
 };
