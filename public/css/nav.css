@@ -1,7 +1,7 @@
 nav {
   position: relative;
   overflow: visible;
-  border-bottom: 3.5px solid #FE0000;
+  border-bottom: 3.5px solid #fe0000;
   box-shadow: 0 2px 2px 0px #cecece;
 }
 
@@ -20,7 +20,7 @@ nav a {
   align-items: center;
 
   margin-top: 24px;
-  padding-bottom: 8px; 
+  padding-bottom: 8px;
 }
 
 .menu-button {
@@ -38,7 +38,7 @@ nav a {
   width: 100%;
   padding-bottom: 6px;
   background-color: white;
-  border-bottom: 3px solid #FE0000;
+  border-bottom: 3px solid #fe0000;
   box-shadow: 0 2px 2px 0px #cecece;
 }
 
@@ -63,5 +63,11 @@ nav a {
 
   100% {
     transform: scaleY(1);
+  }
+}
+
+@media (min-width: 1000px) {
+  nav {
+    box-shadow: none;
   }
 }
