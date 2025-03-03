@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/global.css" />
-    <title><%= title %></title>
+    <title>Foods of Taiwan</title>
   </head>
   <body>
     <%- include ('partials/nav.ejs') %>
@@ -33,7 +33,7 @@
               <% if (!food.default) { %>
                 <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
                 <form action="/foods/<%= food.id %>/delete" method="post">
-                  <button class="secondary-button bold">Delete</button>
+                  <button class="secondary-button bold delete" data-id=<%= food.id %>>Delete</button>
                 </form>
               <% } else { %>
                 <h5>Default</h5>
