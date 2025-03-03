@@ -111,3 +111,9 @@ main {
   min-height: 36px;
   min-width: 70px;
 }
+
+.card:hover {
+  transition: 500ms;
+  transform-origin: center;
+  background-color: rgb(230, 230, 230);
+}
