@@ -10,11 +10,17 @@
   <body>
     <%- include ('partials/nav.ejs') %>
     <main>
+      <section class="hero">
+        <div class="img-wrapper">
+          <img src="/assets/fine-dining.jpg" alt="Shi Lin night market">
+        </div>
+      </section>
       <section class="add-button-holder">
         <button class="add-button primary-button">
-          <a class="text-sm" href="/categories/add">Add New Category</a>
+          <a class="text-sm" href="/foods/add">Add New Food</a>
         </button>
       </section>
+      <h2>Categories</h2>
       <section class="card-holder">
         <% locals.categories.forEach((category) => { %>
           <div class="card" data-id=<%= category.id %>>

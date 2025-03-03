@@ -10,5 +10,5 @@
 # TODO
 - multiple categories per item
 - footer
-- page titles
 - delete confirm prompt
+- pink line in menu slide

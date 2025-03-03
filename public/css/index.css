@@ -1,15 +1,3 @@
-.img-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 24px 12px 0 12px;
-}
-
-.hero img {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 8px;
-}
-
 .hero p {
   margin-top: 12px;
   text-align: center;
