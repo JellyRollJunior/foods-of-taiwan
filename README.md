@@ -11,5 +11,5 @@
 - multiple categories per item
 - footer
 - page titles
-- homepage intro blurb
 - delete confirm prompt
+- html background color
