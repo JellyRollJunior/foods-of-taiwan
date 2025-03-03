@@ -82,7 +82,7 @@ main {
 
 /* Cards */
 .card {
-  border: 2px solid #fe0000;
+  border: 3.5px solid #fe0000;
   border-radius: 16px;
   margin: 25px;
   padding: 18px 20px 16px 20px;
