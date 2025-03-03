@@ -6,6 +6,10 @@ html {
   text-align: center;
 }
 
+.text-rem {
+  font-size: 1rem;
+}
+
 .text-sm {
   font-size: 1.1rem;
 }
@@ -26,8 +30,12 @@ html {
   font-weight: 700;
 }
 
-.light-gray {
-  color: rgb(75 85 99);
+.black {
+  color: black;
+}
+
+.blue {
+  color: #3838de;
 }
 
 .hidden {
@@ -81,6 +89,10 @@ main {
   background-color: rgb(249 250 251);
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+.card a {
+  text-decoration: none;
 }
 
 .card p {

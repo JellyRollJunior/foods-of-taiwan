@@ -11,14 +11,18 @@
     <%- include ('partials/nav.ejs') %>
     <main>
       <div class="card">
-        <div class="text-2x bold light-gray">Foods</div>
-        <div class="text-3x bold"><%= countFood %></div>
-        <div class="light-gray">Total food entries</div>
+        <a href="/foods">
+          <h2 class="text-2x bold black">Foods</h2>
+          <h3 class="text-3x bold blue"><%= countFood %></h3>
+          <h4 class="text-rem black">Total food entries</h4>
+        </a>
       </div>
       <div class="card">
-        <div class="text-2x bold light-gray">Categories</div>
-        <div class="text-3x bold"><%= countCategories %></div>
-        <div class="light-gray">Different types of food</div>
+        <a href="/categories">
+          <h2 class="text-2x bold black">Categories</h2>
+          <h3 class="text-3x bold blue"><%= countCategories %></h3>
+          <h4 class="text-rem black">Different types of food</h4>
+        </a>
       </div>
     </main>
   </body>
