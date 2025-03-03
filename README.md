@@ -11,3 +11,5 @@
 - desktop + tablet view
 - multiple categories per item
 - footer
+- page titles
+- homepage intro blurb

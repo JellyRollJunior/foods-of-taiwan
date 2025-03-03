@@ -125,3 +125,10 @@ main {
   transform-origin: center;
   background-color: rgb(230, 230, 230);
 }
+
+@media (min-width: 850px) {
+  .card-holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
