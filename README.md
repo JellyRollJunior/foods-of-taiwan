@@ -12,4 +12,3 @@
 - footer
 - page titles
 - delete confirm prompt
-- html background color

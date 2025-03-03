@@ -4,12 +4,14 @@ html {
   align-items: start;
 
   font-size: 18px;
+  background-color: rgb(251, 219, 219);
 }
 
 body {
   flex: 1;
   min-height: 100vh;
   max-width: 1000px;
+  background-color: white;
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2);
 }
