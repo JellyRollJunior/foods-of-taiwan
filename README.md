@@ -11,4 +11,3 @@
 - multiple categories per item
 - footer
 - delete confirm prompt
-- pink line in menu slide
