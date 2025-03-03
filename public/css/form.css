@@ -33,3 +33,10 @@ form #description {
 .form-button-holder > * {
   height: var(--button-height);
 }
+
+input,
+select,
+textarea {
+  border: 1px solid;
+  border-radius: 2px;
+}
