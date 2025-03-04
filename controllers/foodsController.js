@@ -22,7 +22,7 @@ const validateFood = [
 const renderAddFoodsPage = async (response, statusCode = 200, errors) => {
     const categories = await db.getCategories();
     console.log(categories);
-    response.status(statusCode).render('addFood', {
+    response.status(statusCode).render('foods/addFood', {
         title: SITE_TITLE,
         action: ADD_FOOD_ROUTE,
         categories,
@@ -45,7 +45,7 @@ const renderEditFoodPage = async (
     }
     const editFoodRoute = `/foods/${foodId}/edit`;
     const categories = await db.getCategories();
-    response.status(statusCode).render('editFood', {
+    response.status(statusCode).render('foods/editFood', {
         title: SITE_TITLE,
         action: editFoodRoute,
         categories,
@@ -57,7 +57,7 @@ const renderEditFoodPage = async (
 const getFoodsPage = async (request, response) => {
     const foods = await db.getFoods();
     console.log(foods);
-    response.render('foods', {
+    response.render('foods/foods', {
         title: 'Taiwanese Food Guide',
         foods,
     });

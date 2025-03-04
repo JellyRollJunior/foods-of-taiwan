@@ -25,7 +25,7 @@ const renderEditCategoryPage = async (
 ) => {
     const { categoryId } = request.params;
     const editCategoryRoute = `/categories/${categoryId}/edit`;
-    response.status(statusCode).render('editCategory', {
+    response.status(statusCode).render('categories/editCategory', {
         action: editCategoryRoute,
         category,
         errors,
@@ -34,13 +34,13 @@ const renderEditCategoryPage = async (
 
 const getCategoriesPage = async (request, response) => {
     const categories = await db.getCategories();
-    response.render('categories', {
+    response.render('categories/categories', {
         categories,
     });
 };
 
 const getAddCategoriesPage = async (request, response) => {
-    response.render('addCategory', {
+    response.render('categories/addCategory', {
         action: ADD_CATEGORY_ROUTE,
     });
 };
@@ -50,7 +50,7 @@ const postAddCategory = [
     async (request, response) => {
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            response.render('addCategory', {
+            response.render('categories/addCategory', {
                 action: ADD_CATEGORY_ROUTE,
                 errors: errors.array(),
             });

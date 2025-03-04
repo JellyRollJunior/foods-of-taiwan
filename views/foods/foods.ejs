@@ -10,12 +10,12 @@
   </head>
   <body>
     <div>
-      <%- include ('partials/nav.ejs') %>
-      <%- include ('partials/deleteModal.ejs') %>
+      <%- include ('../partials/nav.ejs') %>
+      <%- include ('../partials/deleteModal.ejs') %>
       <main>
         <section class="hero">
           <div class="img-wrapper">
-            <img src="/assets/fine-dining.jpg" alt="Shi Lin night market">
+            <img src="/assets/restaurant.jpg" alt="Shi Lin night market">
           </div>
         </section>
         <section class="add-button-holder">
@@ -23,18 +23,19 @@
             <a class="text-sm" href="/foods/add">Add New Food</a>
           </button>
         </section>
-        <h2>Categories</h2>
+        <h2>Foods</h2>
         <section class="card-holder">
-          <% locals.categories.forEach((category) => { %>
-            <div class="card" data-id=<%= category.id %>>
+          <% locals.foods.forEach((food) => { %>
+            <div class="card" data-id=<%= food.id %>>
               <div>
-                <h3 class="text-sm-plus"><%= category.title %></h3>
-                <p><%= category.description %></p>
+                <h3 class="text-sm-plus"><%= food.title %></h3>
+                <h4 class="light-gray"><%= food.categories %></h4>
+                <p><%= food.description %></p>
               </div>
               <div class="button-holder">
-                <% if (!category.default) { %>
-                  <button class="primary-button"><a href="/categories/<%= category.id %>/edit">Edit</a></button>
-                  <button class="secondary-button bold" onClick="openDeleteModal('/categories/<%= category.id %>/delete','<%= category.title %>')">Delete</button>
+                <% if (!food.default) { %>
+                  <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
+                  <button class="secondary-button bold" onClick="openDeleteModal('/foods/<%= food.id %>/delete','<%= food.title %>')">Delete</button>
                 <% } else { %>
                   <h5>Default</h5>
                 <% } %>
@@ -44,6 +45,6 @@
         </section>
       </main>
     </div>
-    <%- include ('partials/footer.ejs') %>
+    <%- include ('../partials/footer.ejs') %>
   </body>
 </html>

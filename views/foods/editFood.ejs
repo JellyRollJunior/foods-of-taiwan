@@ -6,19 +6,19 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/global.css" />
     <link rel="stylesheet" href="/css/form-holder.css" />
-    <title><%= title %></title>
+    <title>Foods of Taiwan</title>
   </head>
   <body>
     <div>
-      <%- include ('partials/nav.ejs') %>
+      <%- include ('../partials/nav.ejs') %>
       <main>
         <div class="form-holder">
           <h2 class="card center-text">Edit Food</h2>
-          <%- include ('partials/error.ejs') %>
+          <%- include ('../partials/error.ejs') %>
           <%- include ('partials/foodForm.ejs') %>
         </div>
       </main>
     </div>
-    <%- include ('partials/footer.ejs') %>
+    <%- include ('../partials/footer.ejs') %>
   </body>
 </html>
