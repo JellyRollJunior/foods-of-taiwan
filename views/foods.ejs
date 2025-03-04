@@ -12,7 +12,6 @@
     <%- include ('partials/nav.ejs') %>
     <%- include ('partials/deleteModal.ejs') %>
     <main>
-      <button onclick="openDeleteModal()">modal</button>
       <section class="hero">
         <div class="img-wrapper">
           <img src="/assets/restaurant.jpg" alt="Shi Lin night market">
@@ -35,9 +34,7 @@
             <div class="button-holder">
               <% if (!food.default) { %>
                 <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
-                <form action="/foods/<%= food.id %>/delete" method="post">
-                  <button class="secondary-button bold delete" data-id=<%= food.id %>>Delete</button>
-                </form>
+                <button class="secondary-button bold delete" onClick="openDeleteModal('/foods/<%= food.id %>/delete','<%= food.title %>')" data-id=<%= food.id %>>Delete</button>
               <% } else { %>
                 <h5>Default</h5>
               <% } %>

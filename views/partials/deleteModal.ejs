@@ -1,12 +1,15 @@
 <link rel="stylesheet" href="/css/delete-modal.css" />
+<script src="/js/deleteModal.js" defer></script>
 <div class="hidden" id="delete-modal">
-  <div class="modal-content" >
+  <div class="modal-content">
     <div class="card">
       <h2>Delete</h2>
       <p>Are you sure you want to delete <span class="deleted-item">FOOD</span>?</p>
       <div class="button-holder">
-        <button class="secondary-button">Delete</button>
-        <button class="primary-button" onClick="closeDeleteModal()">Cancel</button>
+        <form action="" method="POST"><button class="secondary-button">Delete</button></form>
+        <button class="primary-button" onClick="closeDeleteModal()">
+          Cancel
+        </button>
       </div>
     </div>
   </div>
