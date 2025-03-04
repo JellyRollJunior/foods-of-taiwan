@@ -9,13 +9,16 @@
     <title><%= title %></title>
   </head>
   <body>
-    <%- include ('partials/nav.ejs') %>
-    <main>
-      <div class="form-holder">
-        <h2 class="card center-text">Edit Food</h2>
-        <%- include ('partials/error.ejs') %>
-        <%- include ('partials/foodForm.ejs') %>
-      </div>
-    </main>
+    <div>
+      <%- include ('partials/nav.ejs') %>
+      <main>
+        <div class="form-holder">
+          <h2 class="card center-text">Edit Food</h2>
+          <%- include ('partials/error.ejs') %>
+          <%- include ('partials/foodForm.ejs') %>
+        </div>
+      </main>
+    </div>
+    <%- include ('partials/footer.ejs') %>
   </body>
 </html>

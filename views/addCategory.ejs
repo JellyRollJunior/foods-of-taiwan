@@ -9,13 +9,16 @@
     <title>Foods of Taiwan</title>
   </head>
   <body>
-    <%- include ('partials/nav.ejs') %>
-    <main>        
-      <div class="form-holder">
-        <h2 class="card center-text">Add New Category</h2>
-        <%- include ('partials/error.ejs') %>
-        <%- include ('partials/categoryForm.ejs') %>
-      </div>
-    </main>
+    <div>
+      <%- include ('partials/nav.ejs') %>
+      <main>
+        <div class="form-holder">
+          <h2 class="card center-text">Add New Category</h2>
+          <%- include ('partials/error.ejs') %>
+          <%- include ('partials/categoryForm.ejs') %>
+        </div>
+      </main>
+    </div>
+    <%- include ('partials/footer.ejs') %>
   </body>
 </html>

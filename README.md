@@ -10,4 +10,4 @@
 # TODO
 - multiple categories per item
 - footer
-- delete confirm prompt
+- hero description margin

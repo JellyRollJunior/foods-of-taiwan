@@ -9,39 +9,42 @@
     <title>Foods of Taiwan</title>
   </head>
   <body>
-    <%- include ('partials/nav.ejs') %>
-    <%- include ('partials/deleteModal.ejs') %>
-    <main>
-      <section class="hero">
-        <div class="img-wrapper">
-          <img src="/assets/restaurant.jpg" alt="Shi Lin night market">
-        </div>
-      </section>
-      <section class="add-button-holder">
-        <button class="add-button primary-button">
-          <a class="text-sm" href="/foods/add">Add New Food</a>
-        </button>
-      </section>
-      <h2>Foods</h2>
-      <section class="card-holder">
-        <% locals.foods.forEach((food) => { %>
-          <div class="card" data-id=<%= food.id %>>
-            <div>
-              <h3 class="text-sm-plus"><%= food.title %></h3>
-              <h4 class="light-gray"><%= food.category %></h4>
-              <p><%= food.description %></p>
-            </div>
-            <div class="button-holder">
-              <% if (!food.default) { %>
-                <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
-                <button class="secondary-button bold" onClick="openDeleteModal('/foods/<%= food.id %>/delete','<%= food.title %>')">Delete</button>
-              <% } else { %>
-                <h5>Default</h5>
-              <% } %>
-            </div>
+    <div>
+      <%- include ('partials/nav.ejs') %>
+      <%- include ('partials/deleteModal.ejs') %>
+      <main>
+        <section class="hero">
+          <div class="img-wrapper">
+            <img src="/assets/restaurant.jpg" alt="Shi Lin night market">
           </div>
-        <% }); %>
-      </section>
-    </main>
+        </section>
+        <section class="add-button-holder">
+          <button class="add-button primary-button">
+            <a class="text-sm" href="/foods/add">Add New Food</a>
+          </button>
+        </section>
+        <h2>Foods</h2>
+        <section class="card-holder">
+          <% locals.foods.forEach((food) => { %>
+            <div class="card" data-id=<%= food.id %>>
+              <div>
+                <h3 class="text-sm-plus"><%= food.title %></h3>
+                <h4 class="light-gray"><%= food.category %></h4>
+                <p><%= food.description %></p>
+              </div>
+              <div class="button-holder">
+                <% if (!food.default) { %>
+                  <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
+                  <button class="secondary-button bold" onClick="openDeleteModal('/foods/<%= food.id %>/delete','<%= food.title %>')">Delete</button>
+                <% } else { %>
+                  <h5>Default</h5>
+                <% } %>
+              </div>
+            </div>
+          <% }); %>
+        </section>
+      </main>
+    </div>
+    <%- include ('partials/footer.ejs') %>
   </body>
 </html>
