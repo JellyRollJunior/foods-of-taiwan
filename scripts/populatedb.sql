@@ -46,6 +46,10 @@ INSERT INTO food_categories (is_default_value, food_id, category_id) VALUES
     (TRUE, 2, 1),
     (TRUE, 3, 2),
     (TRUE, 4, 3),
+    (TRUE, 5, 3),
     (TRUE, 5, 1),
     (TRUE, 6, 4),
+    (TRUE, 6, 2),
+    (TRUE, 6, 3),
+    (TRUE, 6, 1),
     (TRUE, 7, 5);

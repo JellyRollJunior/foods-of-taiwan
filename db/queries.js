@@ -23,15 +23,16 @@ const getFoodById = databaseHandler(async (id) => {
 const getFoods = databaseHandler(async () => {
     const query = `
         SELECT 
-            foods.id AS id,
-            foods.title AS title, 
-            categories.title AS category,
+            foods.id,
+            foods.title,
             foods.description,
-            foods.is_default_value AS default
-        FROM foods 
-        JOIN food_categories ON foods.id = food_categories.food_id 
-        JOIN categories ON food_categories.category_id = categories.id
-        ORDER BY id
+            foods.is_default_value AS default,
+            STRING_AGG(categories.title, ', ') AS categories
+        FROM foods
+        LEFT JOIN food_categories AS fc ON foods.id = fc.food_id
+        LEFT JOIN categories ON fc.category_id = categories.id
+        GROUP BY foods.id
+        ORDER BY foods.id;
     `;
     const { rows } = await pool.query(query);
     console.log(rows);
