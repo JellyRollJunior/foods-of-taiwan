@@ -9,5 +9,4 @@
 
 # TODO
 - multiple categories per item
-- footer
 - hero description margin

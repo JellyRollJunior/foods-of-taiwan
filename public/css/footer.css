@@ -1,6 +1,8 @@
 footer {
+  margin-top: 24px;
   text-align: center;
   background-color: #f1f1f1;
+  padding: 6px;
 }
 
 .link-holder {
@@ -8,7 +10,7 @@ footer {
   justify-content: center;
   gap: 24px;
 
-  padding: 12px;
+  padding: 12px 0 3px 0;
 }
 
 .link-holder > a {
