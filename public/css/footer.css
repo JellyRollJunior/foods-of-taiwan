@@ -1,0 +1,32 @@
+footer {
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.link-holder {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+
+  padding: 12px;
+}
+
+.link-holder > a {
+  --link-button-size: 32px;
+  width: var(--link-button-size);
+  height: var(--link-button-size);
+  padding: 0;
+  background-size: cover;
+}
+
+a.icon-github {
+  background-image: url(/assets/icons8-github-60.png);
+}
+
+a.icon-linkedin {
+  background-image: url(/assets/icons8-linkedin-60.png);
+}
+
+a.icon-instagram {
+  background-image: url(/assets/icons8-instagram-60.png);
+}
