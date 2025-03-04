@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="/css/delete-modal.css" />
-<div id="delete-modal">
+<div class="hidden" id="delete-modal">
   <div class="modal-content" >
     <div class="card">
       <h2>Delete</h2>
       <p>Are you sure you want to delete <span class="deleted-item">FOOD</span>?</p>
       <div class="button-holder">
         <button class="secondary-button">Delete</button>
-        <button class="primary-button">Cancel</button>
+        <button class="primary-button" onClick="closeDeleteModal()">Cancel</button>
       </div>
     </div>
   </div>

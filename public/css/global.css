@@ -16,6 +16,10 @@ body {
     0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
+.hidden {
+  display: none;
+}
+
 .center-text {
   text-align: center;
 }
