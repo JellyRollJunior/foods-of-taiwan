@@ -9,4 +9,3 @@
 
 # TODO
 - multiple categories per item
-- hero description margin
