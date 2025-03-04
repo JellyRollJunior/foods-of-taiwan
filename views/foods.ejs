@@ -34,7 +34,7 @@
             <div class="button-holder">
               <% if (!food.default) { %>
                 <button class="primary-button"><a href="/foods/<%= food.id %>/edit">Edit</a></button>
-                <button class="secondary-button bold delete" onClick="openDeleteModal('/foods/<%= food.id %>/delete','<%= food.title %>')" data-id=<%= food.id %>>Delete</button>
+                <button class="secondary-button bold" onClick="openDeleteModal('/foods/<%= food.id %>/delete','<%= food.title %>')">Delete</button>
               <% } else { %>
                 <h5>Default</h5>
               <% } %>

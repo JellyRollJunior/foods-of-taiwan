@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/global.css" />
+    <script src="/js/deleteModal.js" defer></script>
     <title>Foods of Taiwan</title>
   </head>
   <body>
     <%- include ('partials/nav.ejs') %>
+    <%- include ('partials/deleteModal.ejs') %>
     <main>
       <section class="hero">
         <div class="img-wrapper">
@@ -31,9 +33,7 @@
             <div class="button-holder">
               <% if (!category.default) { %>
                 <button class="primary-button"><a href="/categories/<%= category.id %>/edit">Edit</a></button>
-                <form action="/categories/<%= category.id %>/delete" method="post">
-                  <button class="secondary-button bold">Delete</button>
-                </form>
+                <button class="secondary-button bold" onClick="openDeleteModal('/categories/<%= category.id %>/delete','<%= category.title %>')">Delete</button>
               <% } else { %>
                 <h5>Default</h5>
               <% } %>
