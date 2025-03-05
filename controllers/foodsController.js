@@ -118,10 +118,7 @@ const postEditFood = [
         const title = request.body.title;
         const description = request.body.description;
         const categoryId = request.body.categoryId;
-        await db.updateFood(foodId, title, description, categoryId);
-        
-        // 500ms timeout because redirect won't wait for DB updates for unknown reasons
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await db.updateFood(foodId, title, description, categoryId);        
         response.redirect('/foods');
     },
 ];

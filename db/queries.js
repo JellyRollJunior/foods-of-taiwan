@@ -111,19 +111,22 @@ const insertCategory = databaseHandler(async (title, description) => {
 }, 'Error inserting category');
 
 const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
-    const query = `
+    let query = `
         INSERT INTO food_categories (food_id, category_id)
-        VALUES ($1, $2)
+        VALUES
     `;
-    if (Array.isArray(categoryId)) {
-        categoryId.forEach(async (id) => {
-            const { rowCount } = await pool.query(query, [foodId, id]);
-            console.log(`Rows inserted into food_categories: ${rowCount}`);
-        });
-    } else {
-        const { rowCount } = await pool.query(query, [foodId, categoryId]);
-        console.log(`Rows inserted into food_categories: ${rowCount}`);
+    // Add a value to query for each categoryId
+    const categoryArray = !Array.isArray(categoryId) ? [categoryId] : categoryId;
+    const values = [];
+    for (let i = 0; i < categoryArray.length; i++) {
+        values.push(` ($1, $${i + 2})`);
     }
+    query = query + values.join(', ');
+    console.log(query);
+    
+    // Execute query
+    const { rowCount } = await pool.query(query, [foodId, ...categoryArray]);
+    console.log(`Rows inserted into food_categories: ${rowCount}`);
 }, 'Error inserting food category');
 
 const updateFood = databaseHandler(

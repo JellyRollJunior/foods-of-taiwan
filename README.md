@@ -10,10 +10,8 @@
 # TODO
 - h4 line height smaller (when breaks to newline, the spacing is too much)
 - Multiple categories 
-    - EDIT
-        - POST query
     - DELETE
-    - Category delete checkup (?)
+    - Category delete 
     - Category edit checkup (?)
     - must select at least one category
     - food form category styling
