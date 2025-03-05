@@ -126,19 +126,21 @@ const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
     }
 }, 'Error inserting food category');
 
-// todo multiple
 const updateFood = databaseHandler(
     async (id, title, description, categoryId) => {
         const query = `
-        UPDATE foods
-        SET
-            title = ($2),
-            description = ($3)
-        WHERE id = ($1)
-    `;
+            UPDATE foods
+            SET
+                title = ($2),
+                description = ($3)
+            WHERE id = ($1)
+        `;
         const { rowCount } = await pool.query(query, [id, title, description]);
         console.log(`Rows updated in foods: ${rowCount}`);
-        await updateFoodCategory(id, categoryId);
+        // delete all old categories & insert new categories
+        await deleteFoodCategoryByFood(id);
+        await insertFoodCategory(id, categoryId);
+        return;
     },
     'Error updating food'
 );
@@ -155,17 +157,6 @@ const updateCategory = databaseHandler(async (id, title, description) => {
     console.log(`Rows updated in categories: ${rowCount}`);
 }, 'Error updating category');
 
-const updateFoodCategory = databaseHandler(async (foodId, categoryId) => {
-    const query = `
-        UPDATE food_categories
-        SET
-            category_id = ($2)
-        WHERE food_id = ($1)
-    `;
-    let { rowCount } = await pool.query(query, [foodId, categoryId]);
-    console.log(`Rows updated in food_categories: ${rowCount}`);
-}, 'Error updating food category');
-
 // todo multiple
 const deleteFood = databaseHandler(async (id) => {
     const query = `
@@ -177,6 +168,7 @@ const deleteFood = databaseHandler(async (id) => {
     console.log(`Rows deleted from foods: ${rowCount}`);
 }, 'Error deleting food');
 
+// REDO for multiple categories
 const deleteCategory = databaseHandler(async (id) => {
     // delete foods that use category
     const deleteFoodQuery = `
@@ -200,6 +192,16 @@ const deleteCategory = databaseHandler(async (id) => {
     ({ rowCount } = await pool.query(deleteCategoryQuery, [id]));
     console.log(`Rows deleted from categories: ${rowCount}`);
 }, 'Error deleting category');
+
+const deleteFoodCategoryByFood = databaseHandler(async (foodId) => {
+    const query = `
+        DELETE
+        FROM food_categories
+        WHERE food_id = ($1)
+    `;
+    let { rowCount } = await pool.query(query, [foodId]);
+    console.log(`Rows deleted from food_categories: ${rowCount}`);
+}, `Error deleting food category`);
 
 export {
     getCountFoods,
