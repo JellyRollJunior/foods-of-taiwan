@@ -1,20 +1,19 @@
 import { pool } from './pool.js';
 import { databaseHandler } from './databaseHandler.js';
 
-// todo multiple
 const getFoodById = databaseHandler(async (id) => {
     const query = `
         SELECT 
             foods.id AS id,
             foods.title AS title,
-            categories.id As category_id,
-            categories.title AS category,
+            ARRAY_AGG(categories.id) AS category_ids,
             foods.description,
             foods.is_default_value AS default
         FROM foods 
         JOIN food_categories ON foods.id = food_categories.food_id 
         JOIN categories ON food_categories.category_id = categories.id
         WHERE foods.id = ($1)
+        GROUP BY foods.id
     `;
     const { rows } = await pool.query(query, [id]);
     console.log(rows);
