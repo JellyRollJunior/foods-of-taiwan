@@ -1,6 +1,7 @@
 import { pool } from './pool.js';
 import { databaseHandler } from './databaseHandler.js';
 
+// todo multiple
 const getFoodById = databaseHandler(async (id) => {
     const query = `
         SELECT 
@@ -115,10 +116,18 @@ const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
         INSERT INTO food_categories (food_id, category_id)
         VALUES ($1, $2)
     `;
-    const { rowCount } = await pool.query(query, [foodId, categoryId]);
-    console.log(`Rows inserted into food_categories: ${rowCount}`);
+    if (Array.isArray(categoryId)) {
+        categoryId.forEach(async (id) => {
+            const { rowCount } = await pool.query(query, [foodId, id]);
+            console.log(`Rows inserted into food_categories: ${rowCount}`);
+        })
+    } else {
+        const { rowCount } = await pool.query(query, [foodId, categoryId]);
+        console.log(`Rows inserted into food_categories: ${rowCount}`);
+    }
 }, 'Error inserting food category');
 
+// todo multiple
 const updateFood = databaseHandler(
     async (id, title, description, categoryId) => {
         const query = `
@@ -158,6 +167,7 @@ const updateFoodCategory = databaseHandler(async (foodId, categoryId) => {
     console.log(`Rows updated in food_categories: ${rowCount}`);
 }, 'Error updating food category');
 
+// todo multiple
 const deleteFood = databaseHandler(async (id) => {
     const query = `
         DELETE 
