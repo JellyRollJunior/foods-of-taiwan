@@ -9,22 +9,11 @@
       <% } %>
     required>
     <label for="category" class="text-sm">Category</label>
-    <select name="categoryId" id="category" required>
-      <% if (locals.categories) { %>
-        <% locals.categories.forEach((category) => { %>
-          <option value=<%= category.id %> 
-            <% if (locals.food && food.category_id == category.id) { %>
-              selected="selected"
-            <% } %>
-          ><%= category.title %></option>
-        <% }) %>
-      <% } %>
-    </select>
     <div>
       <% if (locals.categories) {  %>
         <% locals.categories.forEach((category) => { %>
           <label>
-            <input type="checkbox" name="categoryIdArray" value=<%= category.id %>>
+            <input type="checkbox" name="categoryId" value=<%= category.id %>>
             <%= category.title %>
           </label>
         <% }); %>
