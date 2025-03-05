@@ -20,6 +20,16 @@
         <% }) %>
       <% } %>
     </select>
+    <div>
+      <% if (locals.categories) {  %>
+        <% locals.categories.forEach((category) => { %>
+          <label>
+            <input type="checkbox" name="categoryIdArray" value=<%= category.id %>>
+            <%= category.title %>
+          </label>
+        <% }); %>
+      <% }; %>
+    </div>
     <label for="description" class="text-sm">Description</label>
     <textarea name="description" id="description" minlength="1" maxlength="400" required
       ><% if (locals.food) { %><%= food.description %><% } %></textarea>
