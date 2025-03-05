@@ -11,7 +11,6 @@
 - h4 line height smaller (when breaks to newline, the spacing is too much)
 - Multiple categories 
     - EDIT
-        - form preset + get by ID query
         - POST query
     - DELETE
     - Category delete checkup (?)

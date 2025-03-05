@@ -119,7 +119,7 @@ const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
         categoryId.forEach(async (id) => {
             const { rowCount } = await pool.query(query, [foodId, id]);
             console.log(`Rows inserted into food_categories: ${rowCount}`);
-        })
+        });
     } else {
         const { rowCount } = await pool.query(query, [foodId, categoryId]);
         console.log(`Rows inserted into food_categories: ${rowCount}`);
