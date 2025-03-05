@@ -115,7 +115,7 @@ const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
         INSERT INTO food_categories (food_id, category_id)
         VALUES
     `;
-    // Add a value to query for each categoryId
+    // Add a value for each categoryId
     const categoryArray = !Array.isArray(categoryId) ? [categoryId] : categoryId;
     const values = [];
     for (let i = 0; i < categoryArray.length; i++) {
@@ -123,7 +123,7 @@ const insertFoodCategory = databaseHandler(async (foodId, categoryId) => {
     }
     query = query + values.join(', ');
     console.log(query);
-    
+
     // Execute query
     const { rowCount } = await pool.query(query, [foodId, ...categoryArray]);
     console.log(`Rows inserted into food_categories: ${rowCount}`);
@@ -160,7 +160,6 @@ const updateCategory = databaseHandler(async (id, title, description) => {
     console.log(`Rows updated in categories: ${rowCount}`);
 }, 'Error updating category');
 
-// todo multiple
 const deleteFood = databaseHandler(async (id) => {
     const query = `
         DELETE 
