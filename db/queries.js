@@ -170,22 +170,30 @@ const deleteFood = databaseHandler(async (id) => {
     console.log(`Rows deleted from foods: ${rowCount}`);
 }, 'Error deleting food');
 
-// REDO for multiple categories
 const deleteCategory = databaseHandler(async (id) => {
-    // delete foods that use category
+    // Delete FOODs which has deleted category as it's ONLY category
+    // Query explainer:
+    //      1. Get ids for foods with only 1 category
+    //      2. from (1), take only ids that use deleted category
+    //      3. DELETE THEM 
     const deleteFoodQuery = `
-        DELETE
+        DELETE 
         FROM foods
-        WHERE id IN ( 
-            SELECT id
-            FROM foods
-            JOIN food_categories AS fc ON foods.id = fc.food_id
-            WHERE fc.category_id = ($1)
+        WHERE foods.id IN (
+            SELECT out.id
+            FROM foods AS out
+            JOIN food_categories AS fc ON out.id = fc.food_id
+            WHERE (
+                SELECT count(food_id)
+                FROM food_categories
+                WHERE food_id = out.id
+            ) = 1 and fc.category_id = ($1)
         )
     `;
     let { rowCount } = await pool.query(deleteFoodQuery, [id]);
     console.log(`Rows deleted from foods: ${rowCount}`);
-    // delete category
+
+    // delete category - food_category deletion will cascade when deleting category
     const deleteCategoryQuery = `
         DELETE
         FROM categories
