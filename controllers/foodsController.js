@@ -6,7 +6,7 @@ const ADD_FOOD_ROUTE = '/foods/add';
 
 const LENGTH_ERROR = 'must be between 1 and 25 characters';
 const DESCRIPTION_ERROR = 'must be between 1 and 250 characters';
-const CATEGORY_ERROR = 'Error selecting category';
+const CATEGORY_ERROR = 'Category must be selected';
 const validateFood = [
     body('title')
         .trim()
@@ -16,7 +16,10 @@ const validateFood = [
         .trim()
         .isLength({ min: 1, max: 400 })
         .withMessage(`Description ${DESCRIPTION_ERROR}`),
-    body('categoryId').trim().isInt().withMessage(CATEGORY_ERROR),
+    body('categoryId')
+        .trim()
+        .isInt()
+        .withMessage(CATEGORY_ERROR),
 ];
 
 const renderAddFoodsPage = async (response, statusCode = 200, errors) => {

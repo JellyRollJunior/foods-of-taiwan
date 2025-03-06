@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/form.css">
+<script src="/js/foodForm.js" defer></script>
 <form action=<%= locals.action %> method="POST" class="form-holder">
   <section class="card">
     <h2>Food Details</h2>
@@ -8,7 +9,7 @@
         value="<%= food.title %>"
       <% } %>
     required>
-    <label for="category" class="text-sm">Category</label>
+    <label class="text-sm">Category</label>
     <div>
       <% if (locals.categories) {  %>
         <% locals.categories.forEach((category) => { %>

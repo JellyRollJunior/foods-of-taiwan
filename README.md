@@ -9,7 +9,5 @@
 
 # TODO
 - Multiple categories 
-    - must select at least one category
     - food form category styling
-    - food card cateogry styling
 - delete modal console error
