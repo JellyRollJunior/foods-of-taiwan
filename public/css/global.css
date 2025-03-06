@@ -116,6 +116,10 @@ main {
     0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
+.card h4 {
+  line-height: 1.2;
+}
+
 .card a {
   text-decoration: none;
 }

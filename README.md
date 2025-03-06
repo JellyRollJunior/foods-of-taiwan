@@ -8,7 +8,6 @@
 -   Prettier config
 
 # TODO
-- h4 line height smaller (when breaks to newline, the spacing is too much)
 - Multiple categories 
     - must select at least one category
     - food form category styling
