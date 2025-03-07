@@ -8,12 +8,18 @@ form .card {
   padding-bottom: 24px;
 }
 
-form .card label {
+form .card > label {
   margin-top: 16px;
 }
 
-form select {
-  min-height: 32px;
+.checkbox-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px 12px;
+}
+
+form input[type=checkbox] {
+  margin-right: 6px;
 }
 
 form #description {

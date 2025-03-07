@@ -8,6 +8,5 @@
 -   Prettier config
 
 # TODO
-- Multiple categories 
-    - food form category styling
+- ELEGANT MUST SELECT AT LEAST 1 CATEGORY ERROR ?
 - delete modal console error
