@@ -6,6 +6,3 @@
 -   Dotenv
 -   Node-Postgre
 -   Prettier config
-
-# TODO
-- delete modal console error
