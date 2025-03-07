@@ -20,8 +20,7 @@ CREATE TABLE IF NOT EXISTS categories (
 
 CREATE TABLE IF NOT EXISTS food_categories (
     food_id INTEGER REFERENCES foods (id) ON DELETE CASCADE,
-    category_id INTEGER REFERENCES categories (id) ON DELETE CASCADE,
-    is_default_value boolean DEFAULT FALSE   
+    category_id INTEGER REFERENCES categories (id) ON DELETE CASCADE
 );
 
 -- Insert foods
@@ -41,15 +40,15 @@ INSERT INTO categories (is_default_value, title, description) VALUES
     (FALSE, 'I am a test category 1', 'Please feel free to delete or edit me without guilt of removing neat information!'),
     (FALSE, 'I am a test category 2', 'Please feel free to delete or edit me without guilt of removing neat information!');
 
-INSERT INTO food_categories (is_default_value, food_id, category_id) VALUES
-    (TRUE, 1, 1),
-    (TRUE, 2, 1),
-    (TRUE, 3, 2),
-    (TRUE, 4, 3),
-    (TRUE, 5, 3),
-    (TRUE, 5, 1),
-    (TRUE, 6, 4),
-    (TRUE, 6, 2),
-    (TRUE, 6, 3),
-    (TRUE, 6, 1),
-    (TRUE, 7, 5);
+INSERT INTO food_categories (food_id, category_id) VALUES
+    (1, 1),
+    (2, 1),
+    (3, 2),
+    (4, 3),
+    (5, 3),
+    (5, 1),
+    (6, 4),
+    (6, 2),
+    (6, 3),
+    (6, 1),
+    (7, 5);
