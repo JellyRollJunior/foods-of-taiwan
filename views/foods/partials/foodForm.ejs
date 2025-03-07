@@ -9,7 +9,7 @@
         value="<%= food.title %>"
       <% } %>
     required>
-    <label class="text-sm">Category</label>
+    <label class="text-sm">Category <span class="category-error bold hidden">- Please select at least one category</span></label>
     <div class="checkbox-wrapper">
       <% if (locals.categories) {  %>
         <% locals.categories.forEach((category) => { %>
