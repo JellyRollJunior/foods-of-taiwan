@@ -1,7 +1,7 @@
 <h1 align="center">Foods of Taiwan</h1>
 <h3 align="center">Learn about the various delicacies unique to Taiwan <a href=''>here</a>!</h3>
 <p align="center">
-    <!-- <img align="center" width="" alt="" src=""> -->
+    <img align="center" width="" alt="" src="./public/assets/screenshots/homepage.gif">
 </p>
 
 
@@ -39,12 +39,15 @@ A selection of default foods and categories are also provided (which cannot be e
 
 ## Layout Showcase
 
-<!-- <img width="" alt="" src="./project-images/responsive-demo.gif"> -->
+|  Foods Page |  Category Page  | 
+|  ---------  |  -------------  | 
+| <img width="400px" alt="" src="./public/assets/screenshots/foods-page.gif"> | <img width="400px" alt="" src="./public/assets/screenshots/categories-page.gif"> |
 
-|  Mobile |  Laptop  | 
-|  -----  |  ------  | 
-|  425px  |  1440px  | 
-| <img width="" alt="" src="./project-images/mobile-425.png"> | <img width="" alt="" src="./project-images/tablet-768-win.png"> | <img width="" alt="" src="./project-images/laptop-1440.png"> | 
+## Functionality Showcase
+
+|  Edit Food  |  Delete Food  |
+|  ---------  |  -----------  | 
+| <img width="400px" alt="" src="./public/assets/screenshots/edit.gif"> | <img width="400px" alt="" src="./public/assets/screenshots/delete.gif"> |
 
 ## Retrospective (aka yapping)
 I was worried about how to query for multiple categories but my goat ARRAY_AGG rescued me. SQL is quite fun actually. Takes me back to uni haha. This project took me longer than usual. It was difficult at first to get used to separating logic into it's proper file (controller goes to controller, router logic goes to router, etc). I am very happy I stuck with it though because having the logic separated made debugging and aestetics much nicer because I know where everything is! EJS is also pretty neat but a bit cumbersome. I want react back. 
