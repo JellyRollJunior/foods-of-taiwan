@@ -25,6 +25,8 @@ A selection of default foods and categories are also provided (which cannot be e
 -   PostgreSQL
 -   NodeJS, Express
 -   HTML, EJS, CSS
+-   DB Hosting: neon.tech
+-   Server Hosting: Render.com
 
 ## App Showcase
 
