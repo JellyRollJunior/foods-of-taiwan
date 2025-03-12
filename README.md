@@ -1,5 +1,5 @@
 <h1 align="center">Foods of Taiwan</h1>
-<h3 align="center">Learn about the various delicacies unique to Taiwan <a href=''>here</a>!</h3>
+<h3 align="center">Learn about the various delicacies unique to Taiwan <a href='https://foods-of-taiwan.onrender.com/foods' target="”_blank”">here</a>!</h3>
 <p align="center">
     <img align="center" width="600px" alt="" src="./public/assets/screenshots/homepage.gif">
 </p>
