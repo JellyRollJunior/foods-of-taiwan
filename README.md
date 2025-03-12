@@ -48,7 +48,9 @@ A selection of default foods and categories are also provided (which cannot be e
 -   EJS javascript practice (I want to go back to react now please)
 
 <br>
-<img width="750" alt="" src="./public/assets/screenshots/db.png">
+<div align="center">
+    <img align="center" width="750" alt="" src="./public/assets/screenshots/db.png">
+</div>
 
 ### Retrospective (aka yapping)
 
